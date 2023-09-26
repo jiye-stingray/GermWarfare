@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Germ : MonoBehaviour
@@ -30,6 +31,7 @@ public class Germ : MonoBehaviour
         }
 
         _germRender.color = c;
+        _selectImgObj.SetActive(false);
     }
 
     /// <summary>
