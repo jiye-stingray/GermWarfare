@@ -8,7 +8,11 @@ public class MapManager : Singleton<MapManager>
 {
     public GameObject _map;
     public GameObject _mapTilePrefab;
+
+    [Header("Map")]
+    int[,] _mapInt;
     MapTile[,] _mapTiles;
+
 
     int[] _mapScale = new int[] { 14, 10 };
 
@@ -31,23 +35,38 @@ public class MapManager : Singleton<MapManager>
     {
         _mapTiles = new MapTile[x, y];
 
+        // map Index Set
+        _mapInt = new int[x, y];
+        for (int i = 0; i < _mapInt.GetLength(0); i++)
+        {
+            for (int j = 0; j < _mapInt.GetLength(1); j++)
+            {
+                _mapInt[i, j] = 1;          // 추후 조건으로 장애물 (0) 체크
+            }
+        }
+        
+
         float xMapScale = _map.transform.localScale.x;
         float yMapScale = _map.transform.localScale.y;
 
-        for (int i = 0; i < _mapTiles.GetLength(0); i++)
+        for (int i = 0; i < _mapInt.GetLength(0); i++)
         {
-            for (int j = 0; j < _mapTiles.GetLength(1); j++)
+            for (int j = 0; j < _mapInt.GetLength(1); j++)
             {
-                GameObject m =  Instantiate(_mapTilePrefab,transform.position, Quaternion.identity);
-                m.transform.localScale = new Vector2(xMapScale / _mapTiles.GetLength(0), yMapScale/ _mapTiles.GetLength(1));
-                m.transform.parent = _map.transform;
-                m.transform.localPosition = new Vector2( m.transform.localScale.x * i, -m.transform.localScale.y *  j);
+                if (_mapInt[i,j] == 1)
+                {
+                    GameObject m =  Instantiate(_mapTilePrefab,transform.position, Quaternion.identity);
+                    m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale/ _mapInt.GetLength(1));
+                    m.transform.parent = _map.transform;
+                    m.transform.localPosition = new Vector2( m.transform.localScale.x * i, -m.transform.localScale.y *  j);
 
-                MapTile mapT = m.GetComponent<MapTile>();
-                mapT.x = i;
-                mapT.y = j;
+                    MapTile mapT = m.GetComponent<MapTile>();
+                    mapT.x = i;
+                    mapT.y = j;
 
-                _mapTiles[i, j] = mapT;
+                    _mapTiles[i, j] = mapT;
+                }
+
             }
         }
 

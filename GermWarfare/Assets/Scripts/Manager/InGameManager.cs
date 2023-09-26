@@ -51,7 +51,7 @@ public class InGameManager : Singleton<InGameManager>
         int disX = Math.Abs(Math.Abs(mapTile.x) - Math.Abs(currentPos[0]));
         int disY = Math.Abs(Math.Abs(mapTile.y) - Math.Abs(currentPos[1]));
 
-        if (disX > 2 || disY > 2) return;       // x y 중 하나라도 2보다 거리가 멀리 있다면 return
+        if (disX > 2 || disY > 2) return;       // x y 중 하나라도 2보다 거리가 멀리 있다면 return (다시 짜기)
 
         _currentSelectTile._germ.SetGerm(GermType.None);
         mapTile._germ.SetGerm(_currentType);
