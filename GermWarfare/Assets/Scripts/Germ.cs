@@ -6,6 +6,7 @@ public class Germ : MonoBehaviour
 {
     public GermType _mapGermType;          // 현재 map에 type 상태
     [SerializeField] private SpriteRenderer _germRender;
+    [SerializeField] GameObject _selectImgObj;
 
     public void SetGerm(GermType type)
     {
@@ -29,5 +30,15 @@ public class Germ : MonoBehaviour
         }
 
         _germRender.color = c;
+    }
+
+    /// <summary>
+    /// 세균이 선택되었을 때 
+    /// 첫번째 클릭시
+    /// </summary>
+    public void SelectGerm()
+    {
+        if (InGameManager.Instance._currentType == GermType.None) return;
+        _selectImgObj.SetActive(true);
     }
 }

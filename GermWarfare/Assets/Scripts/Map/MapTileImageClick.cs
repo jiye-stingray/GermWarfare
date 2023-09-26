@@ -14,6 +14,6 @@ public class MapTileImageClick : MonoBehaviour , IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        InGameManager.Instance.Click(_mapTile);
     }
 }
