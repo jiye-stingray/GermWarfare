@@ -50,10 +50,10 @@ public class MapManager : MonoBehaviour
         }
 
         // 시작 세균 추가
-        _mapTiles[0, 0].SetGerm(GermType.Blue);
-        _mapTiles[_x - 1, _y - 1].SetGerm(GermType.Blue);
-        _mapTiles[0, _y - 1].SetGerm(GermType.Red);
-        _mapTiles[_x - 1, 0].SetGerm(GermType.Red);
+        _mapTiles[0, 0]._germ.SetGerm(GermType.Blue);
+        _mapTiles[_x - 1, _y - 1]._germ.SetGerm(GermType.Blue);
+        _mapTiles[0, _y - 1]._germ.SetGerm(GermType.Red);
+        _mapTiles[_x - 1, 0]._germ.SetGerm(GermType.Red);
 
     }
 }
