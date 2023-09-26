@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +11,17 @@ public class MapManager : MonoBehaviour
 
     int[] _mapScale = new int[] { 14, 10 };
 
+    [SerializeField] int _x = 5;
+    [SerializeField] int _y = 5;
+
     // Start is called before the first frame update
     void Start()
     {
-        CreateMap(5, 5);        // ÃßÈÄ ÀÔ·Â º¯°æ 
+        CreateMap(_x, _y);        // ì¶”í›„ ì…ë ¥ ë³€ê²½ 
     }
 
     /// <summary>
-    /// Á¤ÇØÁø Å©±â¿¡ ¸ÂÃç ¸Ê »ı¼º
+    /// ì •í•´ì§„ í¬ê¸°ì— ë§ì¶° ë§µ ìƒì„±
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -45,5 +48,12 @@ public class MapManager : MonoBehaviour
                 _mapTiles[i, j] = mapT;
             }
         }
+
+        // ì‹œì‘ ì„¸ê·  ì¶”ê°€
+        _mapTiles[0, 0].SetGerm(GermType.Blue);
+        _mapTiles[_x - 1, _y - 1].SetGerm(GermType.Blue);
+        _mapTiles[0, _y - 1].SetGerm(GermType.Red);
+        _mapTiles[_x - 1, 0].SetGerm(GermType.Red);
+
     }
 }

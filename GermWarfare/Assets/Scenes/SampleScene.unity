@@ -337,6 +337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _map: {fileID: 1428055058}
   _mapTilePrefab: {fileID: 2394726300209858674, guid: 7530290b21cf92a4c84155e5dfee03fc, type: 3}
+  _x: 10
+  _y: 10
 --- !u!1 &1340438453
 GameObject:
   m_ObjectHideFlags: 0
