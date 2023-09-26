@@ -41,6 +41,8 @@ public class MapManager : MonoBehaviour
                 MapTile mapT = m.GetComponent<MapTile>();
                 mapT.x = i;
                 mapT.y = j;
+
+                _mapTiles[i, j] = mapT;
             }
         }
     }
