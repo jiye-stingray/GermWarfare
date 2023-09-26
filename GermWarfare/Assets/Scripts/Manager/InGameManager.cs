@@ -46,12 +46,11 @@ public class InGameManager : Singleton<InGameManager>
 
     private void SecondClick(MapTile mapTile)
     {
-        int[] currentPos = new int[] { mapTile.x, mapTile.y };
 
-        int disX = Math.Abs(Math.Abs(mapTile.x) - Math.Abs(currentPos[0]));
-        int disY = Math.Abs(Math.Abs(mapTile.y) - Math.Abs(currentPos[1]));
+        int disX = Math.Abs(Math.Abs(mapTile.x) - Math.Abs(_currentSelectTile.x));
+        int disY = Math.Abs(Math.Abs(mapTile.y) - Math.Abs(_currentSelectTile.y));
 
-        if (disX > 2 || disY > 2) return;       // x y 중 하나라도 2보다 거리가 멀리 있다면 return (다시 짜기)
+        if (disX > 2 || disY > 2) return;       // x y 중 하나라도 2보다 거리가 멀리 있다면 return
 
         _currentSelectTile._germ.SetGerm(GermType.None);
         mapTile._germ.SetGerm(_currentType);
