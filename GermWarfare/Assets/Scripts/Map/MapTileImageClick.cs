@@ -1,24 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MapTileImageClick : MonoBehaviour , IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    MapTile _mapTile;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        _mapTile = GetComponentInParent<MapTile>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("fdf");
+        
     }
 }
