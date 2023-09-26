@@ -10,20 +10,18 @@ public class MapManager : Singleton<MapManager>
     public GameObject _mapTilePrefab;
 
     [Header("Map")]
-    int[,] _mapInt;
-    MapTile[,] _mapTiles;
+    public int[,] _mapInt;
+    public MapTile[,] _mapTiles;
 
 
-    int[] _mapScale = new int[] { 14, 10 };
-
-    [SerializeField] int _x = 5;
-    [SerializeField] int _y = 5;
+    public int _mapX = 5;
+    public int _mapY = 5;
 
 
 
     void Start()
     {
-        CreateMap(_x, _y);        // 추후 입력 변경 
+        CreateMap(_mapX, _mapY);        // 추후 입력 변경 
     }
 
     /// <summary>
@@ -72,9 +70,9 @@ public class MapManager : Singleton<MapManager>
 
         // 시작 세균 추가
         _mapTiles[0, 0]._germ.SetGerm(GermType.Blue);
-        _mapTiles[_x - 1, _y - 1]._germ.SetGerm(GermType.Blue);
-        _mapTiles[0, _y - 1]._germ.SetGerm(GermType.Red);
-        _mapTiles[_x - 1, 0]._germ.SetGerm(GermType.Red);
+        _mapTiles[_mapX - 1, _mapY - 1]._germ.SetGerm(GermType.Blue);
+        _mapTiles[0, _mapY - 1]._germ.SetGerm(GermType.Red);
+        _mapTiles[_mapX - 1, 0]._germ.SetGerm(GermType.Red);
 
     }
 

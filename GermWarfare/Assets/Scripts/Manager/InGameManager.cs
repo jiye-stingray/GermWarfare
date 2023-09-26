@@ -54,9 +54,12 @@ public class InGameManager : Singleton<InGameManager>
 
         _currentSelectTile._germ.SetGerm(GermType.None);
         mapTile._germ.SetGerm(_currentType);
+        mapTile._germ.Attack();
 
 
         _currentSelectTile = null;
-        _isFirstClick= true;
+        _isFirstClick = true;
+
+        
     }
 }

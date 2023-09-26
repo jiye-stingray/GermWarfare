@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Germ : MonoBehaviour
 {
+    MapManager _mapManager => MapManager.Instance;
+
     public GermType _mapGermType;          // 현재 map에 type 상태
+    private MapTile _mapTile;
+
     [SerializeField] private SpriteRenderer _germRender;
     [SerializeField] GameObject _selectImgObj;
+
+    private void Awake()
+    {
+        _mapTile = GetComponentInParent<MapTile>();
+    }
 
     public void SetGerm(GermType type)
     {
@@ -42,5 +50,24 @@ public class Germ : MonoBehaviour
     {
         if (InGameManager.Instance._currentType == GermType.None) return;
         _selectImgObj.SetActive(true);
+    }
+
+    public void Attack()
+    {
+        int[] dx = { -1, 0, 1 };
+        int[] dy = { -1, 0, 1 };
+
+        for (int i = 0; i < dx.Length; i++)
+        {
+            for (int j = 0; j < dx.Length; j++)
+            {
+                int newX = _mapTile.x+ dx[i];
+                int newY = _mapTile.y+ dy[j];
+
+                if(newX < 0 || newY < 0 || newX >= _mapManager._mapX || newY >= _mapManager._mapY) continue;
+
+                _mapManager._mapTiles[newX, newY]._germ.SetGerm(InGameManager.Instance._currentType);
+            }
+        }
     }
 }
