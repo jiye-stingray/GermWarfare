@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MapManager : Singleton<MapManager>
 {
@@ -57,4 +58,6 @@ public class MapManager : Singleton<MapManager>
         _mapTiles[_x - 1, 0]._germ.SetGerm(GermType.Red);
 
     }
+
+
 }
