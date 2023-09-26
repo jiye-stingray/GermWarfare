@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour
+public class MapManager : Singleton<MapManager>
 {
     public GameObject _map;
     public GameObject _mapTilePrefab;
@@ -14,7 +14,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] int _x = 5;
     [SerializeField] int _y = 5;
 
-    // Start is called before the first frame update
+
+
     void Start()
     {
         CreateMap(_x, _y);        // 추후 입력 변경 
