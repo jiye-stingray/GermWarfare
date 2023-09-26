@@ -14,13 +14,7 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateMap(6, 6);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CreateMap(5, 5);        // 추후 입력 변경 
     }
 
     /// <summary>
@@ -40,9 +34,13 @@ public class MapManager : MonoBehaviour
             for (int j = 0; j < _mapTiles.GetLength(1); j++)
             {
                 GameObject m =  Instantiate(_mapTilePrefab,transform.position, Quaternion.identity);
-                m.transform.localScale = new Vector2(xMapScale / _mapTiles.GetLength(0),yMapScale/ _mapTiles.GetLength(1));
+                m.transform.localScale = new Vector2(xMapScale / _mapTiles.GetLength(0), yMapScale/ _mapTiles.GetLength(1));
                 m.transform.parent = _map.transform;
-                m.transform.localPosition = new Vector2( m.transform.localScale.x * i, m.transform.localScale.y *  j);
+                m.transform.localPosition = new Vector2( m.transform.localScale.x * i, -m.transform.localScale.y *  j);
+
+                MapTile mapT = m.GetComponent<MapTile>();
+                mapT.x = i;
+                mapT.y = j;
             }
         }
     }
