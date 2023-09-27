@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,6 +24,15 @@ public class MapManager : Singleton<MapManager>
     {
         CreateMap(_mapX, _mapY);        // 추후 입력 변경 
     }
+
+    /// <summary>
+    /// Map의 2차원을 입력..?
+    /// </summary>
+    public void InputMap()
+    {
+
+    }
+
 
     /// <summary>
     /// 정해진 크기에 맞춰 맵 생성
