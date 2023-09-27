@@ -78,5 +78,7 @@ public class Germ : MonoBehaviour
                 _mapManager._mapTiles[newX, newY]._germ.SetGerm(InGameManager.Instance._currentType);
             }
         }
+
+        
     }
 }

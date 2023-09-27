@@ -60,6 +60,30 @@ public class InGameManager : Singleton<InGameManager>
         _currentSelectTile = null;
         _isFirstClick = true;
 
-        
+        GermMoveEnd();
+    }
+
+    private void GermMoveEnd()
+    {
+        ChangeAttak();
+
+        for (int i = 0; i < _mapManager._mapTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < _mapManager._mapTiles.GetLength(1); j++)
+            {
+                if (_mapManager._mapTiles[i, j]._germ._mapGermType == GermType.None) return;
+            }
+        }
+
+        //모든 칸에 세균이 다 채워졌을 때
+        GameManager.Instance.GameOver();
+    }
+
+    /// <summary>
+    /// 공격 전환
+    /// </summary>
+    private void ChangeAttak()
+    {
+        _currentType = (_currentType == GermType.Blue) ? GermType.Red : GermType.Blue;
     }
 }
