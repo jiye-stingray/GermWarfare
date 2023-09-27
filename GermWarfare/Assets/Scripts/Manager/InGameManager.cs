@@ -10,7 +10,7 @@ public class InGameManager : Singleton<InGameManager>
     public GermType _currentType = GermType.Blue;        // 파랑이 선공
     public bool _isFirstClick = true;                    //  첫 클릭
                                                          
-    MapTile _currentSelectTile = null;
+    public MapTile _currentSelectTile = null;
 
 
     void Start()
