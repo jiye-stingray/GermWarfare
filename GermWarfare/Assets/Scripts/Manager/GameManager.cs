@@ -5,7 +5,10 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private int _scoreBlue = 0;
+    public int ScoreBlue { get { return _scoreBlue; } set { _scoreBlue = value; } }
+
     [SerializeField] private int _scoreRed = 0;
+    public int ScoreRed { get { return _scoreRed;} set { _scoreRed = value; } }
 
     void Start()
     {
