@@ -46,6 +46,8 @@ public class InGameManager : Singleton<InGameManager>
 
     private void SecondClick(MapTile mapTile)
     {
+        if (mapTile._germ._mapGermType != GermType.None) return;     // 빈칸으로만 이동
+
 
         int disX = Math.Abs(Math.Abs(mapTile.x) - Math.Abs(_currentSelectTile.x));
         int disY = Math.Abs(Math.Abs(mapTile.y) - Math.Abs(_currentSelectTile.y));
@@ -66,6 +68,7 @@ public class InGameManager : Singleton<InGameManager>
     private void GermMoveEnd()
     {
         ChangeAttak();
+        GameManager.Instance.SetScore();
 
         for (int i = 0; i < _mapManager._mapTiles.GetLength(0); i++)
         {
