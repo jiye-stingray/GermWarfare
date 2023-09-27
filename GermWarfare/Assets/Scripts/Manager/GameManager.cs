@@ -51,6 +51,7 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         Debug.Log("GameOver");
+        GameOverUI.Instance.GameOver();
     }
 
 
