@@ -36,6 +36,6 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void MenuBtnClickEvent()
     {
-        // MenuSceneLoad
+        SceneManager.LoadScene("StartScene");
     }
 }
