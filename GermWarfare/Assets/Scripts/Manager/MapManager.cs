@@ -43,6 +43,11 @@ public class MapManager : Singleton<MapManager>
         float xMapScale = _map.transform.localScale.x;
         float yMapScale = _map.transform.localScale.y;
 
+        int minI = int.MaxValue;
+        int maxI = int.MinValue;
+        int minJ = int.MaxValue;
+        int maxJ = int.MinValue;
+
         for (int i = 0; i < _mapInt.GetLength(0); i++)
         {
             for (int j = 0; j < _mapInt.GetLength(1); j++)
@@ -52,10 +57,16 @@ public class MapManager : Singleton<MapManager>
                 {
                     GameObject m = null;
                     if (_mapInt[i,j] == 1)
+                    {
+                        minI = Math.Min(minI, i);
+                        minJ = Math.Min(minJ, j);
+                        maxI = Math.Max(maxI, i);
+                        maxJ = Math.Max(maxJ, j);
+
                          m = Instantiate(_mapTilePrefab, transform.position, Quaternion.identity);
+                    }
                     else
                         m = Instantiate(_obstacleMapTilePrefab, transform.position, Quaternion.identity);       // 장애물 생성
-
 
                     m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale / _mapInt.GetLength(1));
                     m.transform.parent = _map.transform;
@@ -68,18 +79,14 @@ public class MapManager : Singleton<MapManager>
                     _mapTiles[i, j] = mapT;
 
                 }
-
-
-
-
             }
         }
 
-        // 시작 세균 추가
-        _mapTiles[0, 0]._germ.SetGerm(GermType.Blue);
-        _mapTiles[_mapInt.GetLength(0) - 1, _mapInt.GetLength(1) - 1]._germ.SetGerm(GermType.Blue);
-        _mapTiles[0, _mapInt.GetLength(1) - 1]._germ.SetGerm(GermType.Red);
-        _mapTiles[_mapInt.GetLength(0) - 1, 0]._germ.SetGerm(GermType.Red);
+        // 시작 세균 추가 
+        _mapTiles[minI, minJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Blue);
+        _mapTiles[maxI, maxJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Blue);
+        _mapTiles[minI, maxJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Red);
+        _mapTiles[maxI, minJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Red);
 
     }
 

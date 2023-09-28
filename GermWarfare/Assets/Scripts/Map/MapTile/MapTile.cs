@@ -11,8 +11,6 @@ public enum GermType
 
 public class MapTile : MonoBehaviour
 {
-    public Germ _germ;
-
     // 좌표
     public int x;
     public int y;

@@ -10,7 +10,7 @@ public class InGameManager : Singleton<InGameManager>
     public GermType _currentType = GermType.Blue;        // 파랑이 선공
     public bool _isFirstClick = true;                    //  첫 클릭
                                                          
-    public MapTile _currentSelectTile = null;
+    public NormalMapTile _currentSelectTile = null;
 
 
     void Start()
@@ -37,16 +37,20 @@ public class InGameManager : Singleton<InGameManager>
     
     private void FirstClick(MapTile mapTile)
     {
-        if (mapTile._germ._mapGermType != _currentType) return;     // 선택 타입이 현재 선택해야할 (currentType)과 다르면 return
-        mapTile._germ.SelectGerm();
+        NormalMapTile normalMapTile = mapTile.GetComponent<NormalMapTile>();
 
-        _currentSelectTile = mapTile;
+        if (normalMapTile._germ._mapGermType != _currentType) return;     // 선택 타입이 현재 선택해야할 (currentType)과 다르면 return
+        normalMapTile._germ.SelectGerm();
+
+        _currentSelectTile = normalMapTile;
         _isFirstClick = false;
     }
 
     private void SecondClick(MapTile mapTile)
     {
-        if (mapTile._germ._mapGermType != GermType.None) return;     // 빈칸으로만 이동
+        NormalMapTile normalMapTile = mapTile.GetComponent<NormalMapTile>();
+
+        if (normalMapTile._germ._mapGermType != GermType.None) return;     // 빈칸으로만 이동
 
 
         int disX = Math.Abs(Math.Abs(mapTile.x) - Math.Abs(_currentSelectTile.x));
@@ -55,8 +59,8 @@ public class InGameManager : Singleton<InGameManager>
         if (disX > 2 || disY > 2) return;       // x y 중 하나라도 2보다 거리가 멀리 있다면 return
 
         _currentSelectTile._germ.SetGerm(GermType.None);
-        mapTile._germ.SetGerm(_currentType);
-        mapTile._germ.Attack();
+        normalMapTile._germ.SetGerm(_currentType);
+        normalMapTile._germ.Attack();
 
 
         _currentSelectTile = null;
@@ -74,7 +78,7 @@ public class InGameManager : Singleton<InGameManager>
         {
             for (int j = 0; j < _mapManager._mapTiles.GetLength(1); j++)
             {
-                if (_mapManager._mapTiles[i, j]._germ._mapGermType == GermType.None) return;
+                if (_mapManager._mapTiles[i, j].GetComponent<NormalMapTile>()._germ._mapGermType == GermType.None) return;
             }
         }
 

@@ -66,16 +66,20 @@ public class Germ : MonoBehaviour
 
                 if(newX < 0 || newY < 0 || newX >= _mapManager._mapInt.GetLength(0) || newY >= _mapManager._mapInt.GetLength(1)) continue;
 
-                if(InGameManager.Instance._currentSelectTile.x == newX && InGameManager.Instance._currentSelectTile.y == newY)
+                
+
+                NormalMapTile normalMapTile = _mapManager._mapTiles[newX, newY].GetComponent<NormalMapTile>();
+
+                if (InGameManager.Instance._currentSelectTile.x == newX && InGameManager.Instance._currentSelectTile.y == newY)
                 {
-                    _mapManager._mapTiles[newX, newY]._germ.SetGerm(InGameManager.Instance._currentType);
+                    normalMapTile._germ.SetGerm(InGameManager.Instance._currentType);
                     continue;
                 }
 
 
-                if (_mapManager._mapTiles[newX, newY]._germ._mapGermType == GermType.None) continue;
+                if (normalMapTile._germ._mapGermType == GermType.None) continue;
 
-                _mapManager._mapTiles[newX, newY]._germ.SetGerm(InGameManager.Instance._currentType);
+                normalMapTile._germ.SetGerm(InGameManager.Instance._currentType);
             }
         }
 

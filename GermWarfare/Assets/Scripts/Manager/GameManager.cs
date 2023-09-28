@@ -41,17 +41,21 @@ public class GameManager : Singleton<GameManager>
         {
             for (int j = 0; j < mapTiles.GetLength(1); j++)
             {
-                switch (mapTiles[i,j]._germ._mapGermType)
+                if(mapTiles[i, j].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
                 {
-                    case GermType.Red:
-                        _scoreRed++;
-                        break;
-                    case GermType.Blue:
-                        _scoreBlue++;
-                        break;
-                    default:
-                        break;
+                    switch (normalMapTile._germ._mapGermType)
+                    {
+                        case GermType.Red:
+                            _scoreRed++;
+                            break;
+                        case GermType.Blue:
+                            _scoreBlue++;
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
             }
         }
 
