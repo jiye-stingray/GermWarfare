@@ -36,7 +36,7 @@ public class NormalMapInputUI : MonoBehaviour
         {
             for (int j = 0; j < mapIndex.GetLength(1); j++)
             {
-                mapIndex[i, j] = 1;          // 추후 조건으로 장애물 (0) 체크
+                mapIndex[i, j] = 1;          
             }
         }
 

@@ -1513,8 +1513,7 @@ MonoBehaviour:
   _isDontDestroy: 0
   _map: {fileID: 1428055058}
   _mapTilePrefab: {fileID: 2394726300209858674, guid: 7530290b21cf92a4c84155e5dfee03fc, type: 3}
-  _mapX: 5
-  _mapY: 5
+  _obstacleMapTilePrefab: {fileID: 2394726300209858674, guid: 64cb70f16a0afaa4e924dc1e17327cc0, type: 3}
 --- !u!1 &1243822196
 GameObject:
   m_ObjectHideFlags: 0

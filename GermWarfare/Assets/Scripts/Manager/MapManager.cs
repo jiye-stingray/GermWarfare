@@ -7,12 +7,14 @@ using UnityEngine.EventSystems;
 
 public class MapManager : Singleton<MapManager>
 {
-    public GameObject _map;
-    public GameObject _mapTilePrefab;
+    [SerializeField] private GameObject _map;
+    [SerializeField] private GameObject _mapTilePrefab;
+    [SerializeField] private GameObject _obstacleMapTilePrefab;     // 장애물 prefab
 
     [Header("Map")]
     public int[,] _mapInt;
     public MapTile[,] _mapTiles;
+    
 
 
     void Start()
@@ -45,19 +47,30 @@ public class MapManager : Singleton<MapManager>
         {
             for (int j = 0; j < _mapInt.GetLength(1); j++)
             {
-                if (_mapInt[i,j] == 1)
+
+                if (_mapInt[i, j] > 0)
                 {
-                    GameObject m =  Instantiate(_mapTilePrefab,transform.position, Quaternion.identity);
-                    m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale/ _mapInt.GetLength(1));
+                    GameObject m = null;
+                    if (_mapInt[i,j] == 1)
+                         m = Instantiate(_mapTilePrefab, transform.position, Quaternion.identity);
+                    else
+                        m = Instantiate(_obstacleMapTilePrefab, transform.position, Quaternion.identity);       // 장애물 생성
+
+
+                    m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale / _mapInt.GetLength(1));
                     m.transform.parent = _map.transform;
-                    m.transform.localPosition = new Vector2( m.transform.localScale.x * i, -m.transform.localScale.y *  j);
+                    m.transform.localPosition = new Vector2(m.transform.localScale.x * i, -m.transform.localScale.y * j);
 
                     MapTile mapT = m.GetComponent<MapTile>();
                     mapT.x = i;
                     mapT.y = j;
 
                     _mapTiles[i, j] = mapT;
+
                 }
+
+
+
 
             }
         }
