@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int _scoreRed = 0;
     public int ScoreRed { get { return _scoreRed;} set { _scoreRed = value; } }
 
-    int[,] mapIndex;
+    public int[,] _mapIndex;
 
     void Start()
     {
@@ -20,6 +20,14 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
 
+    }
+
+    /// <summary>
+    /// ∏  ¿Œµ¶Ω∫ ¿˙¿Â
+    /// </summary>
+    public void InputMapIndex(int[,] mapIndex)
+    {
+        _mapIndex = mapIndex;
     }
 
     public void SetScore()
@@ -55,6 +63,5 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("GameOver");
         GameOverUI.Instance.GameOver();
     }
-
 
 }

@@ -22,7 +22,7 @@ public class MapManager : Singleton<MapManager>
 
     void Start()
     {
-        CreateMap(_mapX, _mapY);        // 추후 입력 변경 
+        CreateMap();        // 추후 입력 변경 
     }
 
     /// <summary>
@@ -30,29 +30,16 @@ public class MapManager : Singleton<MapManager>
     /// </summary>
     public void InputMap()
     {
-
+        _mapInt = GameManager.Instance._mapIndex;
+        CreateMap();
     }
 
 
     /// <summary>
     /// 정해진 크기에 맞춰 맵 생성
     /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    private void CreateMap(int x, int y)
-    {
-        _mapTiles = new MapTile[x, y];
-
-        // map Index Set
-        _mapInt = new int[x, y];
-        for (int i = 0; i < _mapInt.GetLength(0); i++)
-        {
-            for (int j = 0; j < _mapInt.GetLength(1); j++)
-            {
-                _mapInt[i, j] = 1;          // 추후 조건으로 장애물 (0) 체크
-            }
-        }
-        
+    private void CreateMap()
+    {   
 
         float xMapScale = _map.transform.localScale.x;
         float yMapScale = _map.transform.localScale.y;
