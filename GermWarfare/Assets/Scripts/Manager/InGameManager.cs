@@ -78,7 +78,12 @@ public class InGameManager : Singleton<InGameManager>
         {
             for (int j = 0; j < _mapManager._mapTiles.GetLength(1); j++)
             {
-                if (_mapManager._mapTiles[i, j].GetComponent<NormalMapTile>()._germ._mapGermType == GermType.None) return;
+                if(_mapManager._mapTiles[i, j].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+                {
+                    // 현재 칸에 하나라도 빈칸이 있으면 모든 칸이 채워진것이 아니다. return
+                    if (normalMapTile._germ._mapGermType == GermType.None) return;
+                }
+
             }
         }
 
