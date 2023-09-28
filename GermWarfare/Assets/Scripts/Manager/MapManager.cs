@@ -15,22 +15,18 @@ public class MapManager : Singleton<MapManager>
     public MapTile[,] _mapTiles;
 
 
-    public int _mapX = 5;
-    public int _mapY = 5;
-
-
-
     void Start()
     {
-        CreateMap();        // 추후 입력 변경 
+        InputMap();
     }
 
     /// <summary>
-    /// Map의 2차원을 입력..?
+    /// Map의 2차원을 입력
     /// </summary>
     public void InputMap()
     {
         _mapInt = GameManager.Instance._mapIndex;
+
         CreateMap();
     }
 
@@ -40,6 +36,7 @@ public class MapManager : Singleton<MapManager>
     /// </summary>
     private void CreateMap()
     {   
+        _mapTiles = new MapTile[_mapInt.GetLength(0),_mapInt.GetLength(1)];
 
         float xMapScale = _map.transform.localScale.x;
         float yMapScale = _map.transform.localScale.y;
@@ -67,9 +64,9 @@ public class MapManager : Singleton<MapManager>
 
         // 시작 세균 추가
         _mapTiles[0, 0]._germ.SetGerm(GermType.Blue);
-        _mapTiles[_mapX - 1, _mapY - 1]._germ.SetGerm(GermType.Blue);
-        _mapTiles[0, _mapY - 1]._germ.SetGerm(GermType.Red);
-        _mapTiles[_mapX - 1, 0]._germ.SetGerm(GermType.Red);
+        _mapTiles[_mapInt.GetLength(0) - 1, _mapInt.GetLength(1) - 1]._germ.SetGerm(GermType.Blue);
+        _mapTiles[0, _mapInt.GetLength(1) - 1]._germ.SetGerm(GermType.Red);
+        _mapTiles[_mapInt.GetLength(0) - 1, 0]._germ.SetGerm(GermType.Red);
 
     }
 

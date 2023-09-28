@@ -64,7 +64,7 @@ public class Germ : MonoBehaviour
                 int newX = _mapTile.x+ dx[i];
                 int newY = _mapTile.y+ dy[j];
 
-                if(newX < 0 || newY < 0 || newX >= _mapManager._mapX || newY >= _mapManager._mapY) continue;
+                if(newX < 0 || newY < 0 || newX >= _mapManager._mapInt.GetLength(0) || newY >= _mapManager._mapInt.GetLength(1)) continue;
 
                 if(InGameManager.Instance._currentSelectTile.x == newX && InGameManager.Instance._currentSelectTile.y == newY)
                 {

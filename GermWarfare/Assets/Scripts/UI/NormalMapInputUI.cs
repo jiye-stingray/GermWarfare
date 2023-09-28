@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NormalMapInputUI : MonoBehaviour
 {
     [SerializeField] Slider _widthSlider;
     [SerializeField] Slider _heightSlider;
+
+    [SerializeField] TMP_Text _widthText;
+    [SerializeField] TMP_Text _heightText;
+
+    int[,] mapIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +24,13 @@ public class NormalMapInputUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _widthText.text = ((int)_widthSlider.value).ToString();
+        _heightText.text = ((int)_heightSlider.value).ToString();
     }
 
     public void StartBtnClickEvent()
     {
-        int[,] mapIndex = new int[(int)_widthSlider.value,(int)_heightSlider.value];
+        mapIndex = new int[(int)_widthSlider.value,(int)_heightSlider.value];
         // map Index Set
         for (int i = 0; i < mapIndex.GetLength(0); i++)
         {
@@ -31,6 +39,8 @@ public class NormalMapInputUI : MonoBehaviour
                 mapIndex[i, j] = 1;          // 추후 조건으로 장애물 (0) 체크
             }
         }
+
         GameManager.Instance.InputMapIndex(mapIndex);
+        SceneManager.LoadScene("InGameScene");
     }
 }
