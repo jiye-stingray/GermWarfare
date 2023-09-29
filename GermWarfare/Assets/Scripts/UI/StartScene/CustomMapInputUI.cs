@@ -46,7 +46,7 @@ public class CustomMapInputUI : MonoBehaviour
             {
                 GameObject go = Instantiate(_tileBtnPrefab, transform.position, Quaternion.identity);
                 _customMapTilesList[j,i] = go.GetComponent<CustomMapTile>();
-                go.transform.parent = _InputMapBtnPanelObj.transform;
+                go.GetComponent<RectTransform>().SetParent(_InputMapBtnPanelObj.GetComponent<RectTransform>());
             }
         }
     }
