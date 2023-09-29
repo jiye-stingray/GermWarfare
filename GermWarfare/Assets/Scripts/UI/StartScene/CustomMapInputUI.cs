@@ -16,16 +16,30 @@ public class CustomMapInputUI : MonoBehaviour
     int[] _selectImgTransY = new int[] { 106, -29, -162 };
     [SerializeField] RectTransform _selectImg;
 
+    int[,] _mapIndex = new int[10,10];
+
+    [Header("MapInputUI")]
+    [SerializeField] GameObject _tileBtnPrefab;
+    [SerializeField] GameObject _InputMapBtnPanelObj;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitBtn();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void InitBtn()
+    {
+        for (int i = 0; i < 99; i++)
+        {
+            GameObject go = Instantiate(_tileBtnPrefab, transform.position, Quaternion.identity);
+            go.transform.parent = _InputMapBtnPanelObj.transform;
+        }
     }
 
     public void EraserTileBtnClickEvent()
@@ -46,8 +60,8 @@ public class CustomMapInputUI : MonoBehaviour
         _selectImg.anchoredPosition = new Vector2(_selectImg.anchoredPosition.x, _selectImgTransY[2]);
     }
 
-    public void ClickMap()
+    public void StartBtnClick()
     {
-
+        GameManager.Instance._mapIndex = _mapIndex;
     }
 }
