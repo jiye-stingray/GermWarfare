@@ -10,6 +10,7 @@ public class MapManager : Singleton<MapManager>
     [SerializeField] private GameObject _map;
     [SerializeField] private GameObject _mapTilePrefab;
     [SerializeField] private GameObject _obstacleMapTilePrefab;     // 장애물 prefab
+    [SerializeField] private GameObject _noneMapTilePrefab;        // 빈칸 prefab
 
     [Header("Map")]
     public int[,] _mapInt;
@@ -53,8 +54,6 @@ public class MapManager : Singleton<MapManager>
             for (int j = 0; j < _mapInt.GetLength(1); j++)
             {
 
-                if (_mapInt[i, j] > 0)
-                {
                     GameObject m = null;
                     if (_mapInt[i,j] == 1)
                     {
@@ -65,8 +64,10 @@ public class MapManager : Singleton<MapManager>
 
                          m = Instantiate(_mapTilePrefab, transform.position, Quaternion.identity);
                     }
-                    else
+                    else if (_mapInt[i,j] == 2)
                         m = Instantiate(_obstacleMapTilePrefab, transform.position, Quaternion.identity);       // 장애물 생성
+                    else if (_mapInt[i,j] == 0)
+                        m = Instantiate(_noneMapTilePrefab,transform.position,Quaternion.identity);
 
                     m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale / _mapInt.GetLength(1));
                     m.transform.parent = _map.transform;
@@ -78,7 +79,6 @@ public class MapManager : Singleton<MapManager>
 
                     _mapTiles[i, j] = mapT;
 
-                }
             }
         }
 

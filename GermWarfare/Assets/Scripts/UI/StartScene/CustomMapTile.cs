@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CustomMapTile : MonoBehaviour
 {
-    [SerializeField] CustomMapInputUI _customMapInputUI;
     private Image _image;
     public int _tileTypeIndex = 0;
 
@@ -19,7 +18,7 @@ public class CustomMapTile : MonoBehaviour
 
     public void SelectTileBtnClickEvent()
     {
-        _tileTypeIndex = (int)_customMapInputUI._currentTileType;
+        _tileTypeIndex = (int)CurrentMapTileType.Instance._currentTileType;
         _image.color = _colors[_tileTypeIndex];
     }
 }
