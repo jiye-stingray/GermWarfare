@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomMapTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] CustomMapInputUI _customMapInputUI;
+    private Image _image;
+    public int _tileTypeIndex = 0;
+
+    [SerializeField] Color[] _colors;
+
+    private void Awake()
     {
-        
+        _image= GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void SelectTileBtnClickEvent()
     {
-        
+        _tileTypeIndex = (int)_customMapInputUI._currentTileType;
+        _image.color = _colors[_tileTypeIndex];
     }
 }
