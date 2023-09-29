@@ -15,7 +15,7 @@ public class MapManager : Singleton<MapManager>
     [Header("Map")]
     public int[,] _mapInt;
     public MapTile[,] _mapTiles;
-    
+
 
 
     void Start()
@@ -38,8 +38,8 @@ public class MapManager : Singleton<MapManager>
     /// 정해진 크기에 맞춰 맵 생성
     /// </summary>
     private void CreateMap()
-    {   
-        _mapTiles = new MapTile[_mapInt.GetLength(0),_mapInt.GetLength(1)];
+    {
+        _mapTiles = new MapTile[_mapInt.GetLength(0), _mapInt.GetLength(1)];
 
         float xMapScale = _map.transform.localScale.x;
         float yMapScale = _map.transform.localScale.y;
@@ -54,30 +54,30 @@ public class MapManager : Singleton<MapManager>
             for (int j = 0; j < _mapInt.GetLength(1); j++)
             {
 
-                    GameObject m = null;
-                    if (_mapInt[i,j] == 1)
-                    {
-                        minI = Math.Min(minI, i);
-                        minJ = Math.Min(minJ, j);
-                        maxI = Math.Max(maxI, i);
-                        maxJ = Math.Max(maxJ, j);
+                GameObject m = null;
+                if (_mapInt[i, j] == 1)
+                {
+                    minI = Math.Min(minI, i);
+                    minJ = Math.Min(minJ, j);
+                    maxI = Math.Max(maxI, i);
+                    maxJ = Math.Max(maxJ, j);
 
-                         m = Instantiate(_mapTilePrefab, transform.position, Quaternion.identity);
-                    }
-                    else if (_mapInt[i,j] == 2)
-                        m = Instantiate(_obstacleMapTilePrefab, transform.position, Quaternion.identity);       // 장애물 생성
-                    else if (_mapInt[i,j] == 0)
-                        m = Instantiate(_noneMapTilePrefab,transform.position,Quaternion.identity);
+                    m = Instantiate(_mapTilePrefab, transform.position, Quaternion.identity);
+                }
+                else if (_mapInt[i, j] == 2)
+                    m = Instantiate(_obstacleMapTilePrefab, transform.position, Quaternion.identity);       // 장애물 생성
+                else if (_mapInt[i, j] == 0)
+                    m = Instantiate(_noneMapTilePrefab, transform.position, Quaternion.identity);
 
-                    m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale / _mapInt.GetLength(1));
-                    m.transform.parent = _map.transform;
-                    m.transform.localPosition = new Vector2(m.transform.localScale.x * i, -m.transform.localScale.y * j);
+                m.transform.localScale = new Vector2(xMapScale / _mapInt.GetLength(0), yMapScale / _mapInt.GetLength(1));
+                m.transform.parent = _map.transform;
+                m.transform.localPosition = new Vector2(m.transform.localScale.x * i, -m.transform.localScale.y * j);
 
-                    MapTile mapT = m.GetComponent<MapTile>();
-                    mapT.x = i;
-                    mapT.y = j;
+                MapTile mapT = m.GetComponent<MapTile>();
+                mapT.x = i;
+                mapT.y = j;
 
-                    _mapTiles[i, j] = mapT;
+                _mapTiles[i, j] = mapT;
 
             }
         }
@@ -85,10 +85,45 @@ public class MapManager : Singleton<MapManager>
         Debug.Log(minI + " " + minJ + " " + maxI + " " + maxJ);
 
         // 시작 세균 추가 
-        _mapTiles[minI, minJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Blue);
-        _mapTiles[maxI, maxJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Blue);
-        _mapTiles[minI, maxJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Red);
-        _mapTiles[maxI, minJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Red);
+
+        GermType germ = GermType.Blue;
+
+        if (_mapTiles[minI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+        {
+            if (normalMapTile._germ._mapGermType == GermType.None)
+            {
+                normalMapTile._germ.SetGerm(germ);
+                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+
+            }
+        }
+        if (_mapTiles[minI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile1))
+        {
+            if (normalMapTile1._germ._mapGermType == GermType.None)
+            {
+                normalMapTile1._germ.SetGerm(germ);
+                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+            }
+
+        }
+        if (_mapTiles[maxI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile2))
+        {
+            if (normalMapTile2._germ._mapGermType == GermType.None)
+            {
+                normalMapTile2._germ.SetGerm(germ);
+                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+            }
+
+        }
+        if (_mapTiles[maxI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile3))
+        {
+            if (normalMapTile3._germ._mapGermType == GermType.None)
+            {
+                normalMapTile3._germ.SetGerm(germ);
+                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+            }
+
+        }
 
     }
 

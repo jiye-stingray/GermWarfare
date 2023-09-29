@@ -33,12 +33,6 @@ public class CustomMapInputUI : MonoBehaviour
     }
     private void InitBtn()
     {
-        /*  for (int i = 0; i < 100; i++)
-          {
-              GameObject go = Instantiate(_tileBtnPrefab, transform.position, Quaternion.identity);
-              _customMapTilesList.Add(go.GetComponent<CustomMapTile>());
-              go.transform.parent = _InputMapBtnPanelObj.transform;
-          }*/
 
         for (int i = 0; i < 10; i++)
         {
