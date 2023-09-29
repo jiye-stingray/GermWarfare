@@ -61,28 +61,32 @@ public class Germ : MonoBehaviour
         {
             for (int j = 0; j < dx.Length; j++)
             {
-                int newX = _mapTile.x+ dx[i];
-                int newY = _mapTile.y+ dy[j];
+                int newX = _mapTile.x + dx[i];
+                int newY = _mapTile.y + dy[j];
 
-                if(newX < 0 || newY < 0 || newX >= _mapManager._mapInt.GetLength(0) || newY >= _mapManager._mapInt.GetLength(1)) continue;
+                if (newX < 0 || newY < 0 || newX >= _mapManager._mapInt.GetLength(0) || newY >= _mapManager._mapInt.GetLength(1)) continue;
 
-                
-
-                NormalMapTile normalMapTile = _mapManager._mapTiles[newX, newY].GetComponent<NormalMapTile>();
-
-                if (InGameManager.Instance._currentSelectTile.x == newX && InGameManager.Instance._currentSelectTile.y == newY)
+                if (_mapManager._mapTiles[newX, newY].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
                 {
+
+                    normalMapTile = _mapManager._mapTiles[newX, newY].GetComponent<NormalMapTile>();
+
+                    if (InGameManager.Instance._currentSelectTile.x == newX && InGameManager.Instance._currentSelectTile.y == newY)
+                    {
+                        normalMapTile._germ.SetGerm(InGameManager.Instance._currentType);
+                        continue;
+                    }
+
+
+                    if (normalMapTile._germ._mapGermType == GermType.None) continue;
+
                     normalMapTile._germ.SetGerm(InGameManager.Instance._currentType);
-                    continue;
+
                 }
 
-
-                if (normalMapTile._germ._mapGermType == GermType.None) continue;
-
-                normalMapTile._germ.SetGerm(InGameManager.Instance._currentType);
             }
         }
 
-        
+
     }
 }

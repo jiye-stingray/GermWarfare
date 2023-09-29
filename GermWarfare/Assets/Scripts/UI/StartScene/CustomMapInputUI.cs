@@ -45,7 +45,7 @@ public class CustomMapInputUI : MonoBehaviour
             for (int j = 0; j < 10; j++)
             {
                 GameObject go = Instantiate(_tileBtnPrefab, transform.position, Quaternion.identity);
-                _customMapTilesList[i,j] = go.GetComponent<CustomMapTile>();
+                _customMapTilesList[j,i] = go.GetComponent<CustomMapTile>();
                 go.transform.parent = _InputMapBtnPanelObj.transform;
             }
         }
@@ -71,12 +71,11 @@ public class CustomMapInputUI : MonoBehaviour
 
     public void StartBtnClickEvent()
     {
-        int cnt = 0;
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
             {
-                _mapIndex[i, j] = _customMapTilesList[i,j]._tileTypeIndex;
+                _mapIndex[j, i] = _customMapTilesList[j,i]._tileTypeIndex;
             }
         }
 

@@ -82,6 +82,8 @@ public class MapManager : Singleton<MapManager>
             }
         }
 
+        Debug.Log(minI + " " + minJ + " " + maxI + " " + maxJ);
+
         // 시작 세균 추가 
         _mapTiles[minI, minJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Blue);
         _mapTiles[maxI, maxJ].GetComponent<NormalMapTile>()._germ.SetGerm(GermType.Blue);
