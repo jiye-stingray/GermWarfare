@@ -82,10 +82,14 @@ public class MapManager : Singleton<MapManager>
             }
         }
 
-        Debug.Log(minI + " " + minJ + " " + maxI + " " + maxJ);
-
         // 시작 세균 추가 
 
+        InitMapGerm(minI, minJ, maxI, maxJ);
+
+    }
+
+    private void InitMapGerm(int minI, int minJ, int maxI, int maxJ)
+    {
         GermType germ = GermType.Blue;
 
         if (_mapTiles[minI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
@@ -120,11 +124,9 @@ public class MapManager : Singleton<MapManager>
             if (normalMapTile3._germ._mapGermType == GermType.None)
             {
                 normalMapTile3._germ.SetGerm(germ);
-                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
             }
 
         }
-
     }
 
 
