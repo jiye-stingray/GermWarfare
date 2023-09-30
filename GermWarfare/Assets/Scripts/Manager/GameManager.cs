@@ -12,6 +12,8 @@ public class GameManager : Singleton<GameManager>
 
     public int[,] _mapIndex;
 
+
+
     void Start()
     {
 
