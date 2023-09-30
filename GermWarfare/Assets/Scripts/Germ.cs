@@ -6,7 +6,7 @@ public class Germ : MonoBehaviour
 {
     MapManager _mapManager => MapManager.Instance;
 
-    public GermType _mapGermType;          // 현재 map에 type 상태
+    public GermType _mapGermType = GermType.None;          // 현재 map에 type 상태
     private MapTile _mapTile;
 
     [SerializeField] private SpriteRenderer _germRender;
@@ -19,6 +19,10 @@ public class Germ : MonoBehaviour
 
     public void SetGerm(GermType type)
     {
+        if (type != _mapGermType)
+        {
+            GoldManager.Instance.AddGold(type);
+        }
         _mapGermType = type;
 
         Color c = new Color();
@@ -81,7 +85,6 @@ public class Germ : MonoBehaviour
                     if (normalMapTile._germ._mapGermType == GermType.None) continue;
 
                     normalMapTile._germ.SetGerm(InGameManager.Instance._currentType);
-
                 }
 
             }
