@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3b8cd48bce01740925b1e55a55cc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _germ: {fileID: 1876882829012024278}
   x: 0
   y: 0
   _germ: {fileID: 1876882829012024278}
@@ -288,6 +287,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2394726300209858672}
     m_Modifications:
+    - target: {fileID: 1310898990736316003, guid: 5a61bf957c39d3240b14f0846e2aeda1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310898990736316003, guid: 5a61bf957c39d3240b14f0846e2aeda1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310898990736316003, guid: 5a61bf957c39d3240b14f0846e2aeda1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2315842178636998773, guid: 5a61bf957c39d3240b14f0846e2aeda1, type: 3}
       propertyPath: m_Name
       value: Germ
@@ -336,6 +347,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4257472159019336504, guid: 5a61bf957c39d3240b14f0846e2aeda1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
     - target: {fileID: 4257472159019336504, guid: 5a61bf957c39d3240b14f0846e2aeda1, type: 3}
       propertyPath: m_SortingOrder
       value: 4
