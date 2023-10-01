@@ -10,6 +10,7 @@ public class Germ : MonoBehaviour
     private MapTile _mapTile;
 
     [SerializeField] private SpriteRenderer _germRender;
+    [SerializeField] private SpriteRenderer _germFaceSprite;
     [SerializeField] GameObject _selectImgObj;
 
     private void Awake()
@@ -31,12 +32,16 @@ public class Germ : MonoBehaviour
         {
             case GermType.None:
                 c = new Color(1, 1, 1, 0);
+                _germFaceSprite.color = new Color(1, 1, 1, 0);
                 break;
             case GermType.Red:
                 c = Color.red;
+                _germFaceSprite.color = new Color(1, 1, 1, 1);
                 break;
             case GermType.Blue:
                 c = Color.blue;
+                _germFaceSprite.color = new Color(1, 1, 1, 1);
+
                 break;
             default:
                 break;
