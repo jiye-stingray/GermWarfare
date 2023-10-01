@@ -94,7 +94,7 @@ public class InGameManager : Singleton<InGameManager>
         }
 
         //모든 칸에 세균이 다 채워졌을 때
-        GameManager.Instance.GameOver();
+        GameManager.Instance.GameOver(false);
     }
 
     /// <summary>
@@ -103,5 +103,10 @@ public class InGameManager : Singleton<InGameManager>
     private void ChangeAttak()
     {
         _currentType = (_currentType == GermType.Blue) ? GermType.Red : GermType.Blue;
+    }
+
+    public void GiveUpBtnClickEvent()
+    {
+        GameManager.Instance.GameOver(true);
     }
 }

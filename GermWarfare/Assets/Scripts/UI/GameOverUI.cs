@@ -22,10 +22,13 @@ public class GameOverUI : Singleton<GameOverUI>
         
     }
 
-    public void GameOver()
+    public void GameOver(bool giveUp)
     {
         _gameOverPanelObj.SetActive(true);
-        _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "Blue" : "Red";
+        if (giveUp)
+            _winText.text = InGameManager.Instance._currentType == GermType.Blue ? "Red" : "Blue";
+        else
+            _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "Blue" : "Red";
         _winText.text += " Win!";
     }
 

@@ -61,13 +61,12 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        if (_scoreBlue == 0 || _scoreRed == 0) GameOver();      
+        if (_scoreBlue == 0 || _scoreRed == 0) GameOver(false);      
     }
 
-    public void GameOver()
+    public void GameOver(bool giveUp)
     {
-        Debug.Log("GameOver");
-        GameOverUI.Instance.GameOver();
+        GameOverUI.Instance.GameOver(giveUp);
     }
 
 }
