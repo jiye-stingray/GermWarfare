@@ -10,8 +10,11 @@ public class GoldManager : Singleton<GoldManager>
 
     private int[,] _redMoneys = new int[26, 2];
     string _redGoldString = "";
+    int _redIndexI = 0, _redIndexJ = 0;
+
     private int[,] _blueMoneys = new int[26, 2];
     string _blueGoldString = "";
+    int _blueIndexI = 0, _blueIndexJ = 0;
 
     [Header("UI")]
     [SerializeField] TMP_Text _blueGoldText;
@@ -26,8 +29,8 @@ public class GoldManager : Singleton<GoldManager>
 
     void Update()
     {
-        _blueGoldText.text = _blueGoldString + "원";
-        _redGoldText.text = _redGoldString + "원";
+        _blueGoldText.text = _blueGoldString;
+        _redGoldText.text = _redGoldString;
 
 
     }
@@ -37,10 +40,10 @@ public class GoldManager : Singleton<GoldManager>
         switch (germType)
         {
             case GermType.Red:
-                _redGoldString = CaculateGold(GermType.Red, _redMoneys);
+                _redGoldString = CaculateGold(GermType.Red, _redMoneys,_redIndexI,_redIndexJ);
                 break;
             case GermType.Blue:
-                _blueGoldString = CaculateGold(GermType.Blue, _blueMoneys);
+                _blueGoldString = CaculateGold(GermType.Blue, _blueMoneys,_blueIndexI,_blueIndexJ);
                 break;
             default:
                 break;
@@ -48,11 +51,10 @@ public class GoldManager : Singleton<GoldManager>
     }
 
     // 다음 숫자 시스템을 계산하는 함수
-    string CaculateGold(GermType germType, int[,] moneys)
+    string CaculateGold(GermType germType, int[,] moneys, int indexI, int indexJ)
     {
         int ran = Random.Range(1, 101);           
         moneys[0, 0] += ran;
-        int indexI = 0, indexJ = 0;
         for (int i = 0; i < moneys.GetLength(0); i++)
         {
             for (int j = 0; j < moneys.GetLength(1); j++)
@@ -63,6 +65,7 @@ public class GoldManager : Singleton<GoldManager>
                     if (j + 1 < moneys.GetLength(1))
                     {
                         moneys[i, j + 1] += 1;
+
                         if (i >= 1)
                             indexI++;
                         else
@@ -75,7 +78,7 @@ public class GoldManager : Singleton<GoldManager>
                             moneys[i + 1, 0] += 1;
                             indexJ = 1;
                         }
-                        else
+                        else //MAX 상태 일때
                         {
                             moneys[i, j] = 999;
                         }
@@ -89,9 +92,13 @@ public class GoldManager : Singleton<GoldManager>
         {
             case GermType.Red:
                 _redMoneys = moneys;
+                _redIndexI= indexI;
+                _redIndexJ= indexJ;
                 break;
             case GermType.Blue:
                 _blueMoneys = moneys;
+                _blueIndexI= indexI;
+                _blueIndexJ= indexJ;
                 break;
             default:
                 break;
