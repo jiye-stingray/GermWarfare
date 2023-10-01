@@ -13,9 +13,12 @@ public class Germ : MonoBehaviour
     [SerializeField] private SpriteRenderer _germFaceSprite;
     [SerializeField] GameObject _selectImgObj;
 
+    Animator _anim;
+
     private void Awake()
     {
         _mapTile = GetComponentInParent<MapTile>();
+        _anim = GetComponent<Animator>();
     }
 
     public void SetGerm(GermType type)
@@ -37,11 +40,12 @@ public class Germ : MonoBehaviour
             case GermType.Red:
                 c = Color.red;
                 _germFaceSprite.color = new Color(1, 1, 1, 1);
+                _anim.SetTrigger("Set");
                 break;
             case GermType.Blue:
                 c = Color.blue;
                 _germFaceSprite.color = new Color(1, 1, 1, 1);
-
+                _anim.SetTrigger("Set");
                 break;
             default:
                 break;

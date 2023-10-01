@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3175985477175855192}
   - component: {fileID: 8151562247075191285}
   - component: {fileID: 7539461996305297071}
+  - component: {fileID: 4561831704635724410}
   m_Layer: 5
   m_Name: Germ
   m_TagString: Untagged
@@ -103,6 +104,27 @@ MonoBehaviour:
   _germRender: {fileID: 8151562247075191285}
   _germFaceSprite: {fileID: 6662716053360972552}
   _selectImgObj: {fileID: 2358622207854102354}
+--- !u!95 &4561831704635724410
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315842178636998773}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0463f2bf0db716846ae9294b036f537a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2358622207854102354
 GameObject:
   m_ObjectHideFlags: 0
