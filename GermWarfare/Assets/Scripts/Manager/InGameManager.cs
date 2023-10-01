@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InGameManager : Singleton<InGameManager>
@@ -50,7 +51,12 @@ public class InGameManager : Singleton<InGameManager>
     {
         NormalMapTile normalMapTile = mapTile.GetComponent<NormalMapTile>();
 
-        if (normalMapTile._germ._mapGermType != GermType.None) return;     // 빈칸으로만 이동
+        if (normalMapTile._germ._mapGermType != GermType.None)
+        {
+            _isFirstClick = true;       // 잘못 선택했을 때 다시 선택하게 
+            _currentSelectTile._germ.SetGerm(_currentSelectTile._germ._mapGermType);
+            return;     
+        }
 
 
         int disX = Math.Abs(Math.Abs(mapTile.x) - Math.Abs(_currentSelectTile.x));
