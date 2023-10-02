@@ -8,11 +8,11 @@ public class GoldManager : Singleton<GoldManager>
 {
 
 
-    private int[,] _redMoneys = new int[26, 2];
+    private int[,] _redMoneys = new int[27, 27];
     string _redGoldString = "";
     int _redIndexI = 0, _redIndexJ = 0;
 
-    private int[,] _blueMoneys = new int[26, 2];
+    private int[,] _blueMoneys = new int[27, 27];
     string _blueGoldString = "";
     int _blueIndexI = 0, _blueIndexJ = 0;
 
@@ -55,38 +55,38 @@ public class GoldManager : Singleton<GoldManager>
     {
         int ran = Random.Range(1, 101);           
         moneys[0, 0] += ran;
-        for (int i = 0; i < moneys.GetLength(0); i++)
+
+        for (int i = 0; i < indexI + 1; i++)
         {
-            for (int j = 0; j < moneys.GetLength(1); j++)
+            for (int j = 0; j < indexJ + 1; j++)
             {
-                if (moneys[i, j] >= 1000)
+                if (moneys[i,j] >= 1000)
                 {
                     moneys[i, j] %= 1000;
-                    if (j + 1 < moneys.GetLength(1))
+
+                    if(j + 1 < moneys.GetLength(1))
                     {
                         moneys[i, j + 1] += 1;
-
-                        if (i >= 1)
-                            indexI++;
-                        else
-                            indexJ++;
+                        indexJ++;
                     }
                     else
                     {
-                        if(i + 1 < moneys.GetLength(0))
+                        if (i + 1 < moneys.GetLength(0))
                         {
                             moneys[i + 1, 0] += 1;
-                            indexJ = 1;
+                            indexI++;
+                            indexJ = 0;
                         }
-                        else //MAX 상태 일때
-                        {
+                        else
                             moneys[i, j] = 999;
-                        }
                     }
+                        
                 }
-            }
 
+            }
         }
+
+
 
         switch (germType)
         {
@@ -99,6 +99,7 @@ public class GoldManager : Singleton<GoldManager>
                 _blueMoneys = moneys;
                 _blueIndexI= indexI;
                 _blueIndexJ= indexJ;
+                Debug.Log(indexI+ " " + indexJ);
                 break;
             default:
                 break;
@@ -106,8 +107,8 @@ public class GoldManager : Singleton<GoldManager>
 
         string alpha = " ABCDEFGHIJKLNMOPQRSTUVWXYZ";
         string s = moneys[indexI, indexJ].ToString();
-        s += alpha[indexJ];
         s += alpha[indexI];
+        s += alpha[indexJ];
 
         return s.Replace(" ", string.Empty);
 
