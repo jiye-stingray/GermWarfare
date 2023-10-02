@@ -99,7 +99,6 @@ public class GoldManager : Singleton<GoldManager>
                 _blueMoneys = moneys;
                 _blueIndexI= indexI;
                 _blueIndexJ= indexJ;
-                Debug.Log(indexI+ " " + indexJ);
                 break;
             default:
                 break;
