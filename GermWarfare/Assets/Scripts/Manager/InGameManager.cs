@@ -2,16 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InGameManager : Singleton<InGameManager>
 {
+    GameManager _gameManager => GameManager.Instance;
     MapManager _mapManager => MapManager.Instance;
 
     public GermType _currentType = GermType.Blue;        // 파랑이 선공
     public bool _isFirstClick = true;                    //  첫 클릭
                                                          
     public NormalMapTile _currentSelectTile = null;
+
+    private void Start()
+    {
+        _gameManager.ScoreBlue = 0;
+        _gameManager.ScoreRed = 0;
+    }
 
     public void Click(MapTile mapTile)
     {
