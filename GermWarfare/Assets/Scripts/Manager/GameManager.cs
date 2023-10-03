@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     public int[,] _mapIndex;
 
+    public List<Tuple<int, int, GermType>> _addGermList = new List<Tuple<int, int, GermType>>();
 
     /// <summary>
     /// ∏  ¿Œµ¶Ω∫ ¿˙¿Â

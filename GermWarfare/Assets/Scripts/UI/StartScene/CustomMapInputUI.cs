@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,11 +76,19 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
 
     public void StartBtnClickEvent()
     {
+        GameManager.Instance._addGermList.Clear();
+
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
             {
                 _mapIndex[j, i] = _customMapTilesList[j,i]._tileTypeIndex;
+
+                if (_customMapTilesList[j,i]._germObject != null)
+                {
+                    GermType germType = (_customMapTilesList[j, i]._germObject.GetComponent<Image>().color == Color.blue) ? GermType.Blue : GermType.Red;
+                    GameManager.Instance._addGermList.Add(Tuple.Create(j, i, germType));
+                }
             }
         }
 
@@ -89,7 +98,7 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
     }
 
 
-    public void AddGerm(RectTransform trans)
+    public GameObject AddGerm(RectTransform trans)
     {
 
         GameObject g = Instantiate(_germImgPrefab, transform.position, Quaternion.identity);
@@ -123,5 +132,7 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
             default:
                 break;
         }
+
+        return g;
     }
 }

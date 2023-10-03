@@ -11,6 +11,7 @@ public class CustomMapTile : MonoBehaviour
 
     [SerializeField] Color[] _colors;
 
+    public GameObject _germObject = null;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class CustomMapTile : MonoBehaviour
             if(_tileTypeIndex == 1)
             {
                 //Germ »ý¼º
-                CustomMapInputUI.Instance.AddGerm(_rectTrans);
+                _germObject =  CustomMapInputUI.Instance.AddGerm(_rectTrans);
             }
 
         }
