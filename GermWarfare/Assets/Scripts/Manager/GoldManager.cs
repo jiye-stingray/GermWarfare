@@ -20,19 +20,10 @@ public class GoldManager : Singleton<GoldManager>
     [SerializeField] TMP_Text _blueGoldText;
     [SerializeField] TMP_Text _redGoldText;
 
-
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         _blueGoldText.text = _blueGoldString;
         _redGoldText.text = _redGoldString;
-
-
     }
 
     public void AddGold(GermType germType)
@@ -50,7 +41,10 @@ public class GoldManager : Singleton<GoldManager>
         }
     }
 
-    // 다음 숫자 시스템을 계산하는 함수
+    /// <summary>
+    /// 다음 숫자 시스템을 계산하는 함수
+    /// </summary>
+    /// <returns></returns>
     string CaculateGold(GermType germType, int[,] moneys, int indexI, int indexJ)
     {
         int ran = Random.Range(1, 101);           
@@ -110,7 +104,5 @@ public class GoldManager : Singleton<GoldManager>
         s += alpha[indexJ];
 
         return s.Replace(" ", string.Empty);
-
-
     }
 }

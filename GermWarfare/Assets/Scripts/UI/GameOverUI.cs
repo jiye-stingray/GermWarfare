@@ -10,17 +10,11 @@ public class GameOverUI : Singleton<GameOverUI>
     [SerializeField] TMP_Text _winText;
     
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameOverPanelObj.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void GameOver(bool giveUp)
     {

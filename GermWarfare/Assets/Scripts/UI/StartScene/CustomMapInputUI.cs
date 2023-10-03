@@ -17,19 +17,11 @@ public class CustomMapInputUI : MonoBehaviour
     [Header("MapInputUI")]
     [SerializeField] GameObject _tileBtnPrefab;
     [SerializeField] GameObject _InputMapBtnPanelObj;
-    //[SerializeField] private List<CustomMapTile> _customMapTilesList = new List<CustomMapTile>();
     [SerializeField] private CustomMapTile[,] _customMapTilesList = new CustomMapTile[10,10];
 
-    // Start is called before the first frame update
     void Start()
     {
         InitBtn();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     private void InitBtn()
     {

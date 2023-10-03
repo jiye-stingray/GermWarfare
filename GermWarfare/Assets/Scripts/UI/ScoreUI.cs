@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -16,8 +16,6 @@ public class ScoreUI : MonoBehaviour
     [SerializeField] Image _image;
 
 
-
-    // Update is called once per frame
     void Update()
     {
         switch (type)
@@ -25,7 +23,7 @@ public class ScoreUI : MonoBehaviour
             case GermType.Red:
                 _scoreText.text = gameManager.ScoreRed.ToString();
 
-                if(gameManager.ScoreRed > gameManager.ScoreBlue)        // ÀÌ±ä »óÅÂ
+                if(gameManager.ScoreRed > gameManager.ScoreBlue)        // ì´ê¸´ ìƒíƒœ
                 {
                     _image.sprite = _winLoseSprites[0];
                 }
@@ -36,7 +34,7 @@ public class ScoreUI : MonoBehaviour
             case GermType.Blue:
                 _scoreText.text = gameManager.ScoreBlue.ToString();
 
-                if (gameManager.ScoreBlue > gameManager.ScoreRed)        // ÀÌ±ä »óÅÂ
+                if (gameManager.ScoreBlue > gameManager.ScoreRed)        // ì´ê¸´ ìƒíƒœ
                 {
                     _image.sprite = _winLoseSprites[0];
                 }

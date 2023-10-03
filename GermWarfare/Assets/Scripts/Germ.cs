@@ -30,6 +30,7 @@ public class Germ : MonoBehaviour
         _mapGermType = type;
 
         Color c = new Color();
+                _germFaceSprite.color = new Color(1, 1, 1, 1);
 
         switch (type)
         {
@@ -39,12 +40,10 @@ public class Germ : MonoBehaviour
                 break;
             case GermType.Red:
                 c = Color.red;
-                _germFaceSprite.color = new Color(1, 1, 1, 1);
                 _anim.SetTrigger("Set");
                 break;
             case GermType.Blue:
                 c = Color.blue;
-                _germFaceSprite.color = new Color(1, 1, 1, 1);
                 _anim.SetTrigger("Set");
                 break;
             default:

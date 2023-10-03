@@ -13,17 +13,6 @@ public class InGameManager : Singleton<InGameManager>
                                                          
     public NormalMapTile _currentSelectTile = null;
 
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void Click(MapTile mapTile)
     {
         if(_isFirstClick)
