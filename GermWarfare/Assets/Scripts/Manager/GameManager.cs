@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameType
+{
+    Normal,
+    Custom
+}
+
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private int _scoreBlue = 0;
@@ -12,6 +18,8 @@ public class GameManager : Singleton<GameManager>
     public int ScoreRed { get { return _scoreRed;} set { _scoreRed = value; } }
 
     public int[,] _mapIndex;
+
+    public GameType _gameType;
 
     public List<Tuple<int, int, GermType>> _addGermList = new List<Tuple<int, int, GermType>>();
 

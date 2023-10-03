@@ -15,10 +15,12 @@ public class TitleUI : MonoBehaviour
 
     public void NormalMapBtnClickEvent()
     {
+        GameManager.Instance._gameType = GameType.Normal;
         _normalMapInputPanle.SetActive(true);
     }
     public void CustomMapBtnClickEvent()
     {
+        GameManager.Instance._gameType = GameType.Custom;
         _customMapInputPanel.SetActive(true);
     }
 

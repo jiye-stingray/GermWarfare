@@ -93,41 +93,60 @@ public class MapManager : Singleton<MapManager>
     {
         GermType germ = GermType.Blue;
 
-        if (_mapTiles[minI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+        switch (GameManager.Instance._gameType)
         {
-            if (normalMapTile._germ._mapGermType == GermType.None)
-            {
-                normalMapTile._germ.SetGerm(germ);
-                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
-            }
+            case GameType.Normal:
+                if (_mapTiles[minI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+                {
+                    if (normalMapTile._germ._mapGermType == GermType.None)
+                    {
+                        normalMapTile._germ.SetGerm(germ);
+                        germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+                    }
+                }
+
+                if (_mapTiles[minI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile1))
+                {
+                    if (normalMapTile1._germ._mapGermType == GermType.None)
+                    {
+                        normalMapTile1._germ.SetGerm(germ);
+                        germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+                    }
+
+                }
+                if (_mapTiles[maxI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile2))
+                {
+                    if (normalMapTile2._germ._mapGermType == GermType.None)
+                    {
+                        normalMapTile2._germ.SetGerm(germ);
+                        germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+                    }
+
+                }
+                if (_mapTiles[maxI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile3))
+                {
+                    if (normalMapTile3._germ._mapGermType == GermType.None)
+                    {
+                        normalMapTile3._germ.SetGerm(germ);
+                    }
+
+                }
+                break;
+            case GameType.Custom:
+
+               List<Tuple<int, int, GermType>> _addGermList = GameManager.Instance._addGermList;
+
+                foreach (Tuple<int,int,GermType> t in _addGermList)
+                {
+                    _mapTiles[t.Item1, t.Item2].GetComponent<NormalMapTile>()._germ.SetGerm(t.Item3);
+                }
+
+                break;
+            default:
+                break;
         }
 
-        if (_mapTiles[minI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile1))
-        {
-            if (normalMapTile1._germ._mapGermType == GermType.None)
-            {
-                normalMapTile1._germ.SetGerm(germ);
-                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
-            }
 
-        }
-        if (_mapTiles[maxI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile2))
-        {
-            if (normalMapTile2._germ._mapGermType == GermType.None)
-            {
-                normalMapTile2._germ.SetGerm(germ);
-                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
-            }
-
-        }
-        if (_mapTiles[maxI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile3))
-        {
-            if (normalMapTile3._germ._mapGermType == GermType.None)
-            {
-                normalMapTile3._germ.SetGerm(germ);
-            }
-
-        }
     }
 
 
