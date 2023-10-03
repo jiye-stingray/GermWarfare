@@ -24,8 +24,8 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
     [Header("SetGerm")]
     [SerializeField] Image _selectGermBtnImg;
     [SerializeField] GameObject _germImgPrefab;
-    Stack<GameObject> _redGermStack = new Stack<GameObject>();
-    Stack<GameObject> _blueGermStack = new Stack<GameObject>();
+    Queue<GameObject> _redGermQueue = new Queue<GameObject>();
+    Queue<GameObject> _blueGermQueue = new Queue<GameObject>();
 
 
     void Start()
@@ -101,12 +101,24 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
         switch (currentMapTileType._currentGermType)
         {
             case GermType.Red:
+                if(_redGermQueue.Count >= 2)
+                {
+                    GameObject go = _redGermQueue.Dequeue();
+                    Destroy(go);
+                    
+                }
+
                 img.color = Color.red;
-                _redGermStack.Push(g);
+                _redGermQueue.Enqueue(g);
                 break;
             case GermType.Blue:
+                if (_blueGermQueue.Count >= 2)
+                {
+                    GameObject go = _blueGermQueue.Dequeue();
+                    Destroy(go);
+                }
                 img.color = Color.blue;
-                _blueGermStack.Push(g);
+                _blueGermQueue.Enqueue(g);
                 break;
             default:
                 break;

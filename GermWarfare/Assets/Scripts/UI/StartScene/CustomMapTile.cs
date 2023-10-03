@@ -11,6 +11,7 @@ public class CustomMapTile : MonoBehaviour
 
     [SerializeField] Color[] _colors;
 
+
     private void Awake()
     {
         _image= GetComponent<Image>();
