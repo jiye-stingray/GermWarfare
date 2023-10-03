@@ -15,8 +15,8 @@ public class MapManager : Singleton<MapManager>
     [Header("Map")]
     public int[,] _mapInt;
     public MapTile[,] _mapTiles;
-
-
+    List<Tuple<int,int>> _mapTilesList = new List<Tuple<int,int>>();
+ 
 
     void Start()
     {
@@ -61,6 +61,7 @@ public class MapManager : Singleton<MapManager>
                     minJ = Math.Min(minJ, j);
                     maxI = Math.Max(maxI, i);
                     maxJ = Math.Max(maxJ, j);
+                    
 
                     m = Instantiate(_mapTilePrefab, transform.position, Quaternion.identity);
                 }
@@ -92,19 +93,13 @@ public class MapManager : Singleton<MapManager>
     {
         GermType germ = GermType.Blue;
 
-        while (true)
+        if (_mapTiles[minI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
         {
-            int cntI = 0, cntJ = 0;
-            if (_mapTiles[minI + cntI++, minJ + cntJ++].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+            if (normalMapTile._germ._mapGermType == GermType.None)
             {
-                if (normalMapTile._germ._mapGermType == GermType.None)
-                {
-                    normalMapTile._germ.SetGerm(germ);
-                    germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
-                    break;
-                }
+                normalMapTile._germ.SetGerm(germ);
+                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
             }
-
         }
 
         if (_mapTiles[minI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile1))
