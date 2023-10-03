@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6311245602154329853}
   - component: {fileID: 6311245602154329851}
   - component: {fileID: 6311245602154329852}
+  - component: {fileID: 3657635174766055796}
   m_Layer: 5
-  m_Name: GermImage
+  m_Name: CustomGerm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,3 +77,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3657635174766055796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311245602154329854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09fd3b67797fe24bbdf56892229870f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

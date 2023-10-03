@@ -26,8 +26,26 @@ public class CustomMapTile : MonoBehaviour
         {
             if(_tileTypeIndex == 1)
             {
+
+                if(_germObject != null)
+                {
+                    switch (_germObject.GetComponent<CustomGerm>()._germType)
+                    {
+                        case GermType.Red:
+                            CustomMapInputUI.Instance._redGermList.Remove(_germObject); 
+                            break;
+                        case GermType.Blue:
+                            CustomMapInputUI.Instance._blueGermList.Remove(_germObject);
+                            break;
+                        default:
+                            break;
+                    }
+                    Destroy(_germObject);
+                }
+
                 //Germ »ý¼º
                 _germObject =  CustomMapInputUI.Instance.AddGerm(_rectTrans);
+
             }
 
         }

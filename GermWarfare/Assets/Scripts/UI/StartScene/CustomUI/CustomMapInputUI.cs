@@ -25,8 +25,8 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
     [Header("SetGerm")]
     [SerializeField] Image _selectGermBtnImg;
     [SerializeField] GameObject _germImgPrefab;
-    Queue<GameObject> _redGermQueue = new Queue<GameObject>();
-    Queue<GameObject> _blueGermQueue = new Queue<GameObject>();
+    public List<GameObject> _redGermList = new List<GameObject>();
+    public List<GameObject> _blueGermList = new List<GameObject>();
 
 
     void Start()
@@ -100,35 +100,37 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
 
     public GameObject AddGerm(RectTransform trans)
     {
-
         GameObject g = Instantiate(_germImgPrefab, transform.position, Quaternion.identity);
         g.transform.SetParent(trans);
         g.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
 
         Image img = g.GetComponent<Image>();
 
         switch (currentMapTileType._currentGermType)
         {
             case GermType.Red:
-                if(_redGermQueue.Count >= 2)
+                if(_redGermList.Count >= 2)
                 {
-                    GameObject go = _redGermQueue.Dequeue();
+                    GameObject go = _redGermList[0];
+                    _redGermList.RemoveAt(0);
                     Destroy(go);
-                    
                 }
-
                 img.color = Color.red;
-                _redGermQueue.Enqueue(g);
+                _redGermList.Add(g);
                 break;
+
             case GermType.Blue:
-                if (_blueGermQueue.Count >= 2)
+                if (_blueGermList.Count >= 2)
                 {
-                    GameObject go = _blueGermQueue.Dequeue();
+                    GameObject go = _blueGermList[0];
+                    _blueGermList.RemoveAt(0);
                     Destroy(go);
                 }
                 img.color = Color.blue;
-                _blueGermQueue.Enqueue(g);
+                _blueGermList.Add(g);
                 break;
+
             default:
                 break;
         }
