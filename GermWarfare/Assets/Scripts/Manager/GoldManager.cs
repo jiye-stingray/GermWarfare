@@ -61,15 +61,21 @@ public class GoldManager : Singleton<GoldManager>
                     if(j + 1 < moneys.GetLength(1))
                     {
                         moneys[i, j + 1] += 1;
-                        indexJ++;
+
+                        if(indexJ == j && indexI == i)
+                            indexJ++;
                     }
                     else
                     {
                         if (i + 1 < moneys.GetLength(0))
                         {
                             moneys[i + 1, 0] += 1;
-                            indexI++;
-                            indexJ = 0;
+
+                            if(indexI == i && indexJ == j)
+                            {
+                                indexI++;
+                                indexJ = 0;
+                            }
                         }
                         else
                             moneys[i, j] = 999;

@@ -28,7 +28,7 @@ public class ScoreUI : MonoBehaviour
                     _image.sprite = _winLoseSprites[0];
                 }
                 else
-                    _image.sprite= _winLoseSprites[1];
+                    _image.sprite = _winLoseSprites[1];
 
                 break;
             case GermType.Blue:
