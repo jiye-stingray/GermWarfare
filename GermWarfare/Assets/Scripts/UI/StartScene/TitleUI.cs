@@ -29,4 +29,8 @@ public class TitleUI : MonoBehaviour
         _customMapInputPanel?.SetActive(false);
     }
 
+    public void ExitBtnClickEvent()
+    {
+        Application.Quit();
+    }
 }
