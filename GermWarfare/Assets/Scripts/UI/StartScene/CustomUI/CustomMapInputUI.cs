@@ -76,6 +76,8 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
 
     public void StartBtnClickEvent()
     {
+        if (_redGermList.Count < 1 || _blueGermList.Count < 1) return;
+
         GameManager.Instance._addGermList.Clear();
 
         for (int i = 0; i < 10; i++)
@@ -103,7 +105,6 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
         GameObject g = Instantiate(_germImgPrefab, transform.position, Quaternion.identity);
         g.transform.SetParent(trans);
         g.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-
 
         Image img = g.GetComponent<Image>();
 

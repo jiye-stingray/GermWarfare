@@ -10,11 +10,11 @@ public class GoldManager : Singleton<GoldManager>
 
     private int[,] _redMoneys = new int[27, 27];
     string _redGoldString = "";
-    int _redIndexI = 0, _redIndexJ = 0;
+    [SerializeField] int _redIndexI = 0, _redIndexJ = 0;
 
     private int[,] _blueMoneys = new int[27, 27];
     string _blueGoldString = "";
-    int _blueIndexI = 0, _blueIndexJ = 0;
+    [SerializeField] int _blueIndexI = 0, _blueIndexJ = 0;
 
     [Header("UI")]
     [SerializeField] TMP_Text _blueGoldText;
