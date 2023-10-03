@@ -2181,7 +2181,7 @@ GameObject:
   - component: {fileID: 714361103}
   - component: {fileID: 714361102}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: WarningText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2204,7 +2204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 399.69434, y: -60}
+  m_AnchoredPosition: {x: 577, y: -817}
   m_SizeDelta: {x: -1291.5151, y: 109.499}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &714361102
@@ -2229,8 +2229,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4826,6 +4826,7 @@ MonoBehaviour:
   _germImgPrefab: {fileID: 6311245602154329854, guid: c8630635c82c2e744a6252ca9de721f1, type: 3}
   _redGermList: []
   _blueGermList: []
+  _warningText: {fileID: 714361102}
 --- !u!114 &1564288102
 MonoBehaviour:
   m_ObjectHideFlags: 0

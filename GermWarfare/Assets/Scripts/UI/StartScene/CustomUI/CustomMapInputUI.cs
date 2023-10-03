@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,6 +29,7 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
     public List<GameObject> _redGermList = new List<GameObject>();
     public List<GameObject> _blueGermList = new List<GameObject>();
 
+    [SerializeField] TMP_Text _warningText;
 
     void Start()
     {
@@ -76,7 +78,11 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
 
     public void StartBtnClickEvent()
     {
-        if (_redGermList.Count < 1 || _blueGermList.Count < 1) return;
+        if (_redGermList.Count < 1 || _blueGermList.Count < 1)
+        {
+            _warningText.text = "You need at least one germ for each color";
+            return;
+        }
 
         GameManager.Instance._addGermList.Clear();
 
