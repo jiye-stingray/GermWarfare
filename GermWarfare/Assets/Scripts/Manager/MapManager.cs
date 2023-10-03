@@ -92,15 +92,21 @@ public class MapManager : Singleton<MapManager>
     {
         GermType germ = GermType.Blue;
 
-        if (_mapTiles[minI, minJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+        while (true)
         {
-            if (normalMapTile._germ._mapGermType == GermType.None)
+            int cntI = 0, cntJ = 0;
+            if (_mapTiles[minI + cntI++, minJ + cntJ++].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
             {
-                normalMapTile._germ.SetGerm(germ);
-                germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
-
+                if (normalMapTile._germ._mapGermType == GermType.None)
+                {
+                    normalMapTile._germ.SetGerm(germ);
+                    germ = (germ == GermType.Blue) ? GermType.Red : GermType.Blue;
+                    break;
+                }
             }
+
         }
+
         if (_mapTiles[minI, maxJ].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile1))
         {
             if (normalMapTile1._germ._mapGermType == GermType.None)
