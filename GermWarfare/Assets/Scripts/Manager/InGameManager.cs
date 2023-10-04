@@ -14,6 +14,8 @@ public class InGameManager : Singleton<InGameManager>
     public bool _isFirstClick = true;                    //  첫 클릭
                                                          
     public NormalMapTile _currentSelectTile = null;
+    
+
 
     private void Start()
     {
@@ -102,8 +104,4 @@ public class InGameManager : Singleton<InGameManager>
         _currentType = (_currentType == GermType.Blue) ? GermType.Red : GermType.Blue;
     }
 
-    public void SurrenderBtnClickEvent()
-    {
-        GameManager.Instance.GameOver(true);
-    }
 }

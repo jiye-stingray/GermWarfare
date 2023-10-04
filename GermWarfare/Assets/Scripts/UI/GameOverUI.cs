@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameOverUI : Singleton<GameOverUI>
 {
     [SerializeField] GameObject _gameOverPanelObj;
     [SerializeField] TMP_Text _winText;
+    [SerializeField] Image _surrendBtnImg;
 
     void Start()
     {
         _gameOverPanelObj.SetActive(false);
     }
 
+    private void Update()
+    {
+        _surrendBtnImg.color = (InGameManager.Instance._currentType == GermType.Red) ? Color.red : Color.blue; 
+    }
 
     public void GameOver(bool giveUp)
     {
@@ -59,5 +65,10 @@ public class GameOverUI : Singleton<GameOverUI>
     public void MenuBtnClickEvent()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void SurrenderBtnClickEvent()
+    {
+        GameManager.Instance.GameOver(true);
     }
 }
