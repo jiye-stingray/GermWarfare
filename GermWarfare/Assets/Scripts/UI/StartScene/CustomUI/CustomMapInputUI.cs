@@ -33,9 +33,14 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
 
     void Start()
     {
-        _warningText.gameObject.SetActive(false);
         InitBtn();
     }
+
+    private void OnEnable()
+    {
+        _warningText.gameObject.SetActive(false);
+    }
+
     private void InitBtn()
     {
         _selectGermBtnImg.color = Color.blue;
