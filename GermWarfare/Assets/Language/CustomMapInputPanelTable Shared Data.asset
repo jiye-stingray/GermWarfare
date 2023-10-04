@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: obstacle_key
     m_Metadata:
       m_Items: []
+  - m_Id: 6879897935872
+    m_Key: click_key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

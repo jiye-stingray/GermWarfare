@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: Obstacle
     m_Metadata:
       m_Items: []
+  - m_Id: 6879897935872
+    m_Localized: Click
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
