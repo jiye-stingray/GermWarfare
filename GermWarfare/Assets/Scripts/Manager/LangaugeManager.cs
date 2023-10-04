@@ -15,7 +15,7 @@ public class LangaugeManager : Singleton<LangaugeManager>
 
     private void Start()
     {
-        StartCoroutine(LocaleChange(_localIndex));
+        StartCoroutine(LangaugeChangeCor(_localIndex));
     }
 
     public void LangauageChangeBtnClickEvent()
@@ -23,15 +23,23 @@ public class LangaugeManager : Singleton<LangaugeManager>
         if (isChanging)
             return;
 
-        int n = (_localIndex == 0) ? 1 : 0;
-        StartCoroutine(LocaleChange(n));
+        _localIndex = (_localIndex == 0) ? 1 : 0;
+        StartCoroutine(LangaugeChangeCor(_localIndex));
 
     }
 
-    IEnumerator LocaleChange(int index)
+    public void LangaugeChange()
+    {
+
+        if (isChanging)
+            return;
+        StartCoroutine(LangaugeChangeCor(_localIndex));
+
+    }
+
+    IEnumerator LangaugeChangeCor(int index)
     {
         isChanging = true;
-        _localIndex = index;
 
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
