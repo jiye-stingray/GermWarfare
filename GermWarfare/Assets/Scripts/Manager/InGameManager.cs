@@ -21,6 +21,8 @@ public class InGameManager : Singleton<InGameManager>
     {
         _gameManager.ScoreBlue = 0;
         _gameManager.ScoreRed = 0;
+
+        CheckGameOver();
     }
 
     public void Click(MapTile mapTile)
@@ -40,8 +42,8 @@ public class InGameManager : Singleton<InGameManager>
         NormalMapTile normalMapTile = mapTile.GetComponent<NormalMapTile>();
 
         if (normalMapTile._germ._mapGermType != _currentType) return;     // 선택 타입이 현재 선택해야할 (currentType)과 다르면 return
-        normalMapTile._germ.SelectGerm();
 
+        normalMapTile._germ.SelectGerm();
         _currentSelectTile = normalMapTile;
         _isFirstClick = false;
     }
@@ -78,12 +80,17 @@ public class InGameManager : Singleton<InGameManager>
     {
         ChangeAttak();
         GameManager.Instance.SetScore();
+        CheckGameOver();
 
+    }
+
+    private void CheckGameOver()
+    {
         for (int i = 0; i < _mapManager._mapTiles.GetLength(0); i++)
         {
             for (int j = 0; j < _mapManager._mapTiles.GetLength(1); j++)
             {
-                if(_mapManager._mapTiles[i, j].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
+                if (_mapManager._mapTiles[i, j].TryGetComponent<NormalMapTile>(out NormalMapTile normalMapTile))
                 {
                     // 현재 칸에 하나라도 빈칸이 있으면 모든 칸이 채워진것이 아니다. return
                     if (normalMapTile._germ._mapGermType == GermType.None) return;

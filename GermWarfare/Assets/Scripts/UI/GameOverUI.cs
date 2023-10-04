@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class GameOverUI : Singleton<GameOverUI>
 {
+
+    InGameManager _inGameManager => InGameManager.Instance;
+    GameManager _gameManager => GameManager.Instance;
+
     [SerializeField] GameObject _gameOverPanelObj;
     [SerializeField] TMP_Text _winText;
     [SerializeField] Image _surrendBtnImg;
@@ -29,13 +33,22 @@ public class GameOverUI : Singleton<GameOverUI>
 
         if(LangaugeManager.Instance._localIndex == 0)
         {
+            Debug.Log(_gameManager.ScoreRed);
+            Debug.Log(_gameManager.ScoreBlue);
+
             if (giveUp)
             {
-                _winText.text = InGameManager.Instance._currentType == GermType.Blue ? "Red" : "Blue" ;
+                _winText.text = _inGameManager._currentType == GermType.Blue ? "Red" : "Blue" ;
             }
             else
             {
-                _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "Blue" : "Red";
+                if (_gameManager.ScoreBlue == _gameManager.ScoreRed)
+                {
+                    _winText.text = "Draw!";
+                    return;
+                }
+                else
+                    _winText.text = _gameManager.ScoreBlue > _gameManager.ScoreRed ? "Blue" : "Red";
 
             }
             _winText.text += " Win!";
@@ -46,11 +59,17 @@ public class GameOverUI : Singleton<GameOverUI>
             if (giveUp)
             {
 
-                _winText.text = InGameManager.Instance._currentType == GermType.Blue ? "빨강" : "파랑";
+                _winText.text = _inGameManager._currentType == GermType.Blue ? "빨강" : "파랑";
             }
             else
             {
-                _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "파랑" : "빨강";
+                if (_gameManager.ScoreBlue == _gameManager.ScoreRed)
+                {
+                    _winText.text = "무승부!";
+                    return;
+                }
+                else
+                    _winText.text = _gameManager.ScoreBlue > _gameManager.ScoreRed ? "파랑" : "빨강";
             }
             _winText.text += " 승리!";
         }
@@ -59,6 +78,7 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void ReStartBtnClickEvent()
     {
+        Debug.Log("fdf");
         SceneManager.LoadScene("InGameScene");
     }
 
