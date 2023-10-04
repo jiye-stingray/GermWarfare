@@ -45,7 +45,6 @@ public class GameOverUI : Singleton<GameOverUI>
             else
             {
                 _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "파랑" : "빨강";
-
             }
             _winText.text += " 승리!";
         }
