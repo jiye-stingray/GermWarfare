@@ -33,8 +33,6 @@ public class GameOverUI : Singleton<GameOverUI>
 
         if(LangaugeManager.Instance._localIndex == 0)
         {
-            Debug.Log(_gameManager.ScoreRed);
-            Debug.Log(_gameManager.ScoreBlue);
 
             if (giveUp)
             {
