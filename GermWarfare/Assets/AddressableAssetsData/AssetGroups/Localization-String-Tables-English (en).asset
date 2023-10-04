@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: 7fbf74f1c094092439044150432c7991
+    m_Address: NormalMapInputPanelTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 5bd6f531290ef7b42b70efffbbf5ee9b
+    m_Address: CustomMapInputPanelTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 85f237f5aba9aa7469fd81aab557d271, type: 2}
   m_SchemaSet:

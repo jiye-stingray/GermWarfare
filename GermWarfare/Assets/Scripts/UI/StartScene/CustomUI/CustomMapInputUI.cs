@@ -33,6 +33,7 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
 
     void Start()
     {
+        _warningText.gameObject.SetActive(false);
         InitBtn();
     }
     private void InitBtn()
@@ -80,7 +81,7 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
     {
         if (_redGermList.Count < 1 || _blueGermList.Count < 1)
         {
-            _warningText.text = "You need at least one germ for each color";
+            _warningText.gameObject.SetActive(true);
             return;
         }
 
