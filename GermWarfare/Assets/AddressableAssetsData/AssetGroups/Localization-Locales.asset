@@ -16,7 +16,17 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 821a80ac66592a74c8711d87ef766e4d
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: fc0f73b5a76a1be48be34af244ed4405
+    m_Address: English (en)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+  - m_GUID: e5d6324724eb6734cb00c2ebf71fd5e0
+    m_Address: Korean (South Korea) (ko-KR)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 85f237f5aba9aa7469fd81aab557d271, type: 2}
   m_SchemaSet:
