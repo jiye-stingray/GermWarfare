@@ -23,6 +23,8 @@ public class GameManager : Singleton<GameManager>
 
     public List<Tuple<int, int, GermType>> _addGermList = new List<Tuple<int, int, GermType>>();
 
+    public int _localIndex = 0;
+
     /// <summary>
     /// ¸Ê ÀÎµ¦½º ÀúÀå
     /// </summary>

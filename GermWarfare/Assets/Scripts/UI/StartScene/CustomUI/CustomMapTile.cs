@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,18 @@ public class CustomMapTile : MonoBehaviour
 
     public void SelectTileBtnClickEvent()
     {
+        if(_germObject != null)
+        {
+            Color _color = _germObject.GetComponent<Image>().color;
+
+            if (_color == Color.red)
+                CustomMapInputUI.Instance._redGermList.Remove(_germObject);
+            else if (_color == Color.blue)
+                CustomMapInputUI.Instance._blueGermList.Remove(_germObject);
+
+            Destroy(_germObject);
+        }
+
         if(CurrentMapTileType.Instance._currentTileType == TileType.Germ) //ÇöÀç 
         {
             if(_tileTypeIndex == 1)
@@ -47,7 +60,6 @@ public class CustomMapTile : MonoBehaviour
                 _germObject =  CustomMapInputUI.Instance.AddGerm(_rectTrans);
 
             }
-
         }
         else
         {

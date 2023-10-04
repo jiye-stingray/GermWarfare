@@ -8,14 +8,13 @@ using UnityEngine.UI;
 
 public class LangaugeManager : Singleton<LangaugeManager>
 {
-    public int _localIndex = 0;
-    [SerializeField] Button _button;
+    GameManager gameManager => GameManager.Instance;
 
     bool isChanging = false;
 
     private void Start()
     {
-        StartCoroutine(LangaugeChangeCor(_localIndex));
+        StartCoroutine(LangaugeChangeCor(gameManager._localIndex));
     }
 
     public void LangauageChangeBtnClickEvent()
@@ -23,8 +22,8 @@ public class LangaugeManager : Singleton<LangaugeManager>
         if (isChanging)
             return;
 
-        _localIndex = (_localIndex == 0) ? 1 : 0;
-        StartCoroutine(LangaugeChangeCor(_localIndex));
+        gameManager._localIndex = (gameManager._localIndex == 0) ? 1 : 0;
+        StartCoroutine(LangaugeChangeCor(gameManager._localIndex));
 
     }
 
@@ -33,7 +32,7 @@ public class LangaugeManager : Singleton<LangaugeManager>
 
         if (isChanging)
             return;
-        StartCoroutine(LangaugeChangeCor(_localIndex));
+        StartCoroutine(LangaugeChangeCor(gameManager._localIndex));
 
     }
 

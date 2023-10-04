@@ -1408,9 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941c2367107120a44aaade40aed75679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDontDestroy: 1
-  _localIndex: 0
-  _button: {fileID: 1049738662}
+  _isDontDestroy: 0
 --- !u!1 &459695955
 GameObject:
   m_ObjectHideFlags: 0

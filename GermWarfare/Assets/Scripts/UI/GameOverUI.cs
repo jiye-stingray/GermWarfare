@@ -31,7 +31,7 @@ public class GameOverUI : Singleton<GameOverUI>
 
         _winText.text = "";
 
-        if(LangaugeManager.Instance._localIndex == 0)
+        if(GameManager.Instance._localIndex == 0)
         {
 
             if (giveUp)
@@ -76,7 +76,6 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void ReStartBtnClickEvent()
     {
-        Debug.Log("fdf");
         SceneManager.LoadScene("InGameScene");
     }
 
