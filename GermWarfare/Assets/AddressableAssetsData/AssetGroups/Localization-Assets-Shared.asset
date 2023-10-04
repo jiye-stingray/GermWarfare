@@ -29,6 +29,10 @@ MonoBehaviour:
     m_Address: Assets/Language/CustomMapInputPanelTable Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: dedc9738bf0fc3f4f8aaea1521f427be
+    m_Address: Assets/Language/GameOverPanelTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 85f237f5aba9aa7469fd81aab557d271, type: 2}
   m_SchemaSet:

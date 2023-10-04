@@ -8,7 +8,6 @@ public class GameOverUI : Singleton<GameOverUI>
 {
     [SerializeField] GameObject _gameOverPanelObj;
     [SerializeField] TMP_Text _winText;
-    
 
     void Start()
     {
@@ -19,11 +18,38 @@ public class GameOverUI : Singleton<GameOverUI>
     public void GameOver(bool giveUp)
     {
         _gameOverPanelObj.SetActive(true);
-        if (giveUp)
-            _winText.text = InGameManager.Instance._currentType == GermType.Blue ? "Red" : "Blue";
+
+        _winText.text = "";
+
+        if(LangaugeManager.Instance._localIndex == 0)
+        {
+            if (giveUp)
+            {
+                _winText.text = InGameManager.Instance._currentType == GermType.Blue ? "Red" : "Blue" ;
+            }
+            else
+            {
+                _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "Blue" : "Red";
+
+            }
+            _winText.text += " Win!";
+
+        }
         else
-            _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "Blue" : "Red";
-        _winText.text += " Win!";
+        {
+            if (giveUp)
+            {
+
+                _winText.text = InGameManager.Instance._currentType == GermType.Blue ? "빨강" : "파랑";
+            }
+            else
+            {
+                _winText.text = GameManager.Instance.ScoreBlue > GameManager.Instance.ScoreRed ? "파랑" : "빨강";
+
+            }
+            _winText.text += " 승리!";
+        }
+
     }
 
     public void ReStartBtnClickEvent()

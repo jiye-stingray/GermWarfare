@@ -733,7 +733,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &460031317
@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 604944091}
   - component: {fileID: 604944093}
   - component: {fileID: 604944092}
+  - component: {fileID: 604944094}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -903,7 +904,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Give Up
+  m_text: Surrender
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f5ac0cb49515fd4ab254ecba6fc7581, type: 2}
   m_sharedMaterial: {fileID: -7862849533039204510, guid: 0f5ac0cb49515fd4ab254ecba6fc7581, type: 2}
@@ -930,13 +931,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -980,6 +981,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604944090}
   m_CullTransparentMesh: 1
+--- !u!114 &604944094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604944090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:dedc9738bf0fc3f4f8aaea1521f427be
+    m_TableEntryReference:
+      m_KeyId: 3395580551168
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 604944092}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &608595176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1110,7 @@ GameObject:
   - component: {fileID: 722941544}
   - component: {fileID: 722941543}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: TitleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1244,7 @@ GameObject:
   - component: {fileID: 767367103}
   - component: {fileID: 767367102}
   m_Layer: 5
-  m_Name: GiveUPButton
+  m_Name: SurrenderButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1276,7 +1317,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1827912283}
         m_TargetAssemblyTypeName: InGameManager, Assembly-CSharp
-        m_MethodName: GiveUpBtnClickEvent
+        m_MethodName: SurrenderBtnClickEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1703,7 +1744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu
+  m_text: Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f5ac0cb49515fd4ab254ecba6fc7581, type: 2}
   m_sharedMaterial: {fileID: -7862849533039204510, guid: 0f5ac0cb49515fd4ab254ecba6fc7581, type: 2}
@@ -1769,7 +1810,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1018080819
@@ -2827,6 +2868,7 @@ GameObject:
   - component: {fileID: 1811279690}
   - component: {fileID: 1811279692}
   - component: {fileID: 1811279691}
+  - component: {fileID: 1811279693}
   m_Layer: 5
   m_Name: GameOverText (TMP)
   m_TagString: Untagged
@@ -2874,7 +2916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GameOver
+  m_text: Game Over
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f5ac0cb49515fd4ab254ecba6fc7581, type: 2}
   m_sharedMaterial: {fileID: -7862849533039204510, guid: 0f5ac0cb49515fd4ab254ecba6fc7581, type: 2}
@@ -2940,7 +2982,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1811279692
@@ -2951,6 +2993,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811279689}
   m_CullTransparentMesh: 1
+--- !u!114 &1811279693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811279689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:dedc9738bf0fc3f4f8aaea1521f427be
+    m_TableEntryReference:
+      m_KeyId: 4401869578240
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1811279691}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1827912281
 GameObject:
   m_ObjectHideFlags: 0

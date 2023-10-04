@@ -102,7 +102,7 @@ public class InGameManager : Singleton<InGameManager>
         _currentType = (_currentType == GermType.Blue) ? GermType.Red : GermType.Blue;
     }
 
-    public void GiveUpBtnClickEvent()
+    public void SurrenderBtnClickEvent()
     {
         GameManager.Instance.GameOver(true);
     }

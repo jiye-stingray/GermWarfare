@@ -35,6 +35,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: 3bce1aa6974fe5643bda3f33c206bb49
+    m_Address: GameOverPanelTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 85f237f5aba9aa7469fd81aab557d271, type: 2}
   m_SchemaSet:
