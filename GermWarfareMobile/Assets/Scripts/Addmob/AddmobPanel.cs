@@ -17,6 +17,8 @@ public class AddmobPanel : Addmob
 
     public void Start()
     {
+        InitId("ca-app-pub-9769062654991032/6379349746");
+
         base.Start();
 
         LoadLoadInterstitialAd();
@@ -114,6 +116,7 @@ public class AddmobPanel : Addmob
         {
             Debug.Log("Showing interstitial ad.");
             _interstitialAd.Show();
+
         }
         else
         {

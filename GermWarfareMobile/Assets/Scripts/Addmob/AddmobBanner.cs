@@ -10,6 +10,7 @@ public class AddmobBanner : Addmob
 
     public void Start()
     {
+        InitId("ca-app-pub-9769062654991032/1318594756");
         base.Start();
 
         CreateBannerView();
