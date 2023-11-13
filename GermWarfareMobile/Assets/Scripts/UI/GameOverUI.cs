@@ -14,7 +14,7 @@ public class GameOverUI : Singleton<GameOverUI>
     [SerializeField] GameObject _gameOverPanelObj;
     [SerializeField] TMP_Text _winText;
     [SerializeField] Image _surrendBtnImg;
-
+    [SerializeField] AddmobPanel _addmobPanel;
     void Start()
     {
         _gameOverPanelObj.SetActive(false);
@@ -76,14 +76,13 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void ReStartBtnClickEvent()
     {
-
+        _addmobPanel.ShowInterstitialAd();
 
         SceneManager.LoadScene("InGameScene");
     }
 
     public void MenuBtnClickEvent()
     {
-        //AddmobPanel.Instance.
         SceneManager.LoadScene("StartScene");
     }
 

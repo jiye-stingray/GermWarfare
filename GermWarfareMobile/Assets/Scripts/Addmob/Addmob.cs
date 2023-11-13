@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Addmob : Singleton<Addmob>
+public class Addmob : MonoBehaviour
 {
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
@@ -16,7 +16,6 @@ public class Addmob : Singleton<Addmob>
 
     protected void Start()
     {
-
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
             // This callback is called once the MobileAds SDK is initialized.
