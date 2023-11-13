@@ -76,14 +76,26 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void ReStartBtnClickEvent()
     {
+        _addmobPanel.SetDel(LoadInGameScene);
         _addmobPanel.ShowInterstitialAd();
 
+    }
+
+    private void LoadInGameScene()
+    {
         SceneManager.LoadScene("InGameScene");
     }
 
     public void MenuBtnClickEvent()
     {
+        _addmobPanel.SetDel(LoadStartScene);
+        _addmobPanel.ShowInterstitialAd();
+    }
+
+    private void LoadStartScene()
+    {
         SceneManager.LoadScene("StartScene");
+
     }
 
     public void SurrenderBtnClickEvent()
