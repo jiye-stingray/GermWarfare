@@ -83,6 +83,7 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void MenuBtnClickEvent()
     {
+        //AddmobPanel.Instance.
         SceneManager.LoadScene("StartScene");
     }
 
