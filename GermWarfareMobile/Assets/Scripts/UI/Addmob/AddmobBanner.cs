@@ -34,9 +34,9 @@ public class AddmobBanner : MonoBehaviour
     {
         Debug.Log("Creating banner view");
 
-
-        // Create a 320x50 banner at top of the screen
-        _bannerView = new BannerView(_adUnitId, AdSize.Banner, AdPosition.BottomRight);
+        AdSize adSize = new AdSize(320, 100);
+            //AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
+        _bannerView = new BannerView(_adUnitId, adSize, AdPosition.BottomRight);
 
         LoadAd();
     }
