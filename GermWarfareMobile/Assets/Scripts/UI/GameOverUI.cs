@@ -76,6 +76,8 @@ public class GameOverUI : Singleton<GameOverUI>
 
     public void ReStartBtnClickEvent()
     {
+
+
         SceneManager.LoadScene("InGameScene");
     }
 
