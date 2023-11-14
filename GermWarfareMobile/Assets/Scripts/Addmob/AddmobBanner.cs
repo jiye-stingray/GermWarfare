@@ -24,7 +24,7 @@ public class AddmobBanner : Addmob
 
         AdSize adSize = new AdSize(320, 100);
             //AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
-        _bannerView = new BannerView(_adUnitId, adSize, AdPosition.BottomRight);
+        _bannerView = new BannerView(_adUnitId, AdSize.Banner, AdPosition.BottomRight);
 
         LoadAd();
     }
