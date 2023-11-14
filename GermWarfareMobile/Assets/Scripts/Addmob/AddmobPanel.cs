@@ -2,13 +2,19 @@ using GoogleMobileAds.Api;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class AddmobPanel : Addmob 
+public class AddmobPanel : Addmob
 {
+    // These ad units are configured to always serve test ads.
+#if UNITY_ANDROID
+    private string _adUnitId = "ca-app-pub-9769062654991032/6379349746";          //temp
+#elif UNITY_IPHONE
+  private string _adUnitId = "ca-app-pub-3940256099942544/2934735716";
+#else
+  private string _adUnitId = "unused";
+#endif
 
     public delegate void AddmobDel();
     public AddmobDel _aDel;
@@ -17,17 +23,18 @@ public class AddmobPanel : Addmob
 
     public void Start()
     {
-        InitId("ca-app-pub-9769062654991032/6379349746");
+        MobileAds.Initialize((InitializationStatus initStatus) =>
+        {
+            // This callback is called once the MobileAds SDK is initialized.
+        });
+        LoadInterstitialAd();
 
-        base.Start();
-
-        LoadLoadInterstitialAd();
     }
 
     /// <summary>
     /// 전면 광고 로드
     /// </summary>
-    public void LoadLoadInterstitialAd()
+    public void LoadInterstitialAd()
     {
         // Clean up the old ad before loading a new one.
         if (_interstitialAd != null)
@@ -110,18 +117,33 @@ public class AddmobPanel : Addmob
     /// <summary>
     /// Shows the interstitial ad.
     /// </summary>
-    public void ShowInterstitialAd()
+    public void ShowInterstitialAd(AddmobDel action)
     {
-        if (_interstitialAd != null && _interstitialAd.CanShowAd())
-        {
-            Debug.Log("Showing interstitial ad.");
-            _interstitialAd.Show();
+        LoadInterstitialAd();
+        SetDel(action);
 
-        }
-        else
+        StartCoroutine(ShowInterstitialCor());
+
+        IEnumerator ShowInterstitialCor()
         {
-            Debug.LogError("Interstitial ad is not ready yet.");
+            while (!_interstitialAd.CanShowAd())
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+            this._interstitialAd.Show();
         }
+
+        /*        if (_interstitialAd != null && _interstitialAd.CanShowAd())
+                {
+                    Debug.Log("Showing interstitial ad.");
+                    _interstitialAd.Show();
+
+                }
+                else
+                {
+                    //_aDel?.Invoke();
+                    //Debug.LogError("Interstitial ad is not ready yet.");
+                }*/
     }
-    
+
 }

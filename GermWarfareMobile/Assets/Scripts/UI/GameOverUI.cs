@@ -14,6 +14,7 @@ public class GameOverUI : Singleton<GameOverUI>
     [SerializeField] GameObject _gameOverPanelObj;
     [SerializeField] TMP_Text _winText;
     [SerializeField] Image _surrendBtnImg;
+
     [SerializeField] AddmobPanel _addmobPanel;
     void Start()
     {

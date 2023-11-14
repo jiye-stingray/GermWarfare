@@ -35,6 +35,6 @@ public class NormalMapInputUI : MonoBehaviour
         }
 
         GameManager.Instance.InputMapIndex(mapIndex);
-        SceneManager.LoadScene("InGameScene");
+        GameManager.Instance.LoadInGameScene();
     }
 }

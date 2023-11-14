@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameType
 {
@@ -24,6 +25,8 @@ public class GameManager : Singleton<GameManager>
     public List<Tuple<int, int, GermType>> _addGermList = new List<Tuple<int, int, GermType>>();
 
     public int _localIndex = 0;
+
+    [SerializeField] AddmobBanner _addmobBanner;
 
     /// <summary>
     /// ∏  ¿Œµ¶Ω∫ ¿˙¿Â
@@ -68,6 +71,12 @@ public class GameManager : Singleton<GameManager>
     public void GameOver(bool giveUp)
     {
         GameOverUI.Instance.GameOver(giveUp);
+    }
+
+    public void LoadInGameScene()
+    {
+        _addmobBanner.DestroyBannerView();
+        SceneManager.LoadScene("InGameScene");
     }
 
 }

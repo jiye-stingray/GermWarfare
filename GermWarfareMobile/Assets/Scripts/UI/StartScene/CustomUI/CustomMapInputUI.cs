@@ -109,7 +109,7 @@ public class CustomMapInputUI : Singleton<CustomMapInputUI>
         }
 
         GameManager.Instance._mapIndex = _mapIndex;
-        SceneManager.LoadScene("InGameScene");
+        GameManager.Instance.LoadInGameScene();
 
     }
 

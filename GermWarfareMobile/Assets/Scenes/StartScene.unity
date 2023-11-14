@@ -311,6 +311,10 @@ PrefabInstance:
       value: GameManger
       objectReference: {fileID: 0}
     - target: {fileID: 4965702412053608016, guid: ffe8e4bc259bae54697b7faea16f7816, type: 3}
+      propertyPath: _addmobBanner
+      value: 
+      objectReference: {fileID: 2040038916}
+    - target: {fileID: 4965702412053608016, guid: ffe8e4bc259bae54697b7faea16f7816, type: 3}
       propertyPath: _isDontDestroy
       value: 1
       objectReference: {fileID: 0}
