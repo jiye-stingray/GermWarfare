@@ -14,8 +14,6 @@ public class Addmob : MonoBehaviour
   protected string _adUnitId = "unused";
 #endif
 
-    protected string _adCustomUnitId = string.Empty;
-
     protected void Start()
     {
         MobileAds.Initialize((InitializationStatus initStatus) =>
@@ -27,11 +25,6 @@ public class Addmob : MonoBehaviour
 
     protected void InitId(string custId)
     {
-        if (_adCustomUnitId == string.Empty)
-        {
-            Debug.LogError("Null adUnitID");
-            return;
-        }
 
 #if UNITY_ANDROID
         _adUnitId = custId;          

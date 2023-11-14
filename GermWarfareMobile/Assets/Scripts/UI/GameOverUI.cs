@@ -77,7 +77,7 @@ public class GameOverUI : Singleton<GameOverUI>
     public void ReStartBtnClickEvent()
     {
         _addmobPanel.SetDel(LoadInGameScene);
-        _addmobPanel.ShowInterstitialAd();
+        _addmobPanel.ShowInterstitialAd(LoadInGameScene);
 
     }
 
@@ -89,7 +89,7 @@ public class GameOverUI : Singleton<GameOverUI>
     public void MenuBtnClickEvent()
     {
         _addmobPanel.SetDel(LoadStartScene);
-        _addmobPanel.ShowInterstitialAd();
+        _addmobPanel.ShowInterstitialAd(LoadStartScene);
     }
 
     private void LoadStartScene()
