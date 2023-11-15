@@ -119,31 +119,36 @@ public class AddmobPanel : Addmob
     /// </summary>
     public void ShowInterstitialAd(AddmobDel action)
     {
-        LoadInterstitialAd();
-        SetDel(action);
+        //LoadInterstitialAd();
+        //SetDel(action);
 
-        StartCoroutine(ShowInterstitialCor());
+        _aDel = null;
+        _aDel += action;
 
-        IEnumerator ShowInterstitialCor()
-        {
-            while (!_interstitialAd.CanShowAd())
-            {
-                yield return new WaitForSeconds(0.2f);
-            }
-            this._interstitialAd.Show();
-        }
+        _aDel?.Invoke();
 
-        /*        if (_interstitialAd != null && _interstitialAd.CanShowAd())
+
+        /*        StartCoroutine(ShowInterstitialCor());
+
+                IEnumerator ShowInterstitialCor()
                 {
-                    Debug.Log("Showing interstitial ad.");
-                    _interstitialAd.Show();
-
-                }
-                else
-                {
-                    //_aDel?.Invoke();
-                    //Debug.LogError("Interstitial ad is not ready yet.");
+                    while (!_interstitialAd.CanShowAd())
+                    {
+                        yield return new WaitForSeconds(0.2f);
+                    }
+                    this._interstitialAd.Show();
                 }*/
+
+/*        if (_interstitialAd != null && _interstitialAd.CanShowAd())
+        {
+            Debug.Log("Showing interstitial ad.");
+            _interstitialAd.Show();
+
+        }
+        else
+        {
+            //Debug.LogError("Interstitial ad is not ready yet.");
+        }*/
     }
 
 }
