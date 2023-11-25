@@ -14,6 +14,7 @@ public class Germ : MonoBehaviour
     [SerializeField] GameObject _selectImgObj;
 
     Animator _anim;
+    private readonly int _setAnimationHash = Animator.StringToHash("Set");
 
     private void Awake()
     {
@@ -40,11 +41,11 @@ public class Germ : MonoBehaviour
                 break;
             case GermType.Red:
                 c = Color.red;
-                _anim.SetTrigger("Set");
+                _anim.SetTrigger(_setAnimationHash);
                 break;
             case GermType.Blue:
                 c = Color.blue;
-                _anim.SetTrigger("Set");
+                _anim.SetTrigger(_setAnimationHash);
                 break;
             default:
                 break;
